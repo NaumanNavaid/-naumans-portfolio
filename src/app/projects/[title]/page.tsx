@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 
-export default function ProjectPage({ params }: { params: { title: string } }) {
+export default function ProjectPage({ params }: { params: { title: string } } & any) {
   const project = projects.find(p => 
     p.link === `/projects/${params.title}`
   );
