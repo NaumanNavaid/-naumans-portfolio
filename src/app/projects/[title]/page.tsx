@@ -3,7 +3,14 @@ import projects from '@/data/projects'; // You'll need to create this data file
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ProjectPage({ params }: { params: { title: string } }) {
+// Add proper type definition for props
+interface ProjectPageProps {
+  params: {
+    title: string;
+  };
+}
+
+export default function ProjectPage({ params }: ProjectPageProps) {
   const project = projects.find(p => 
     p.link === `/projects/${params.title}`
   );
