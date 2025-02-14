@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import projects from '@/data/projects'; // You'll need to create this data file
+import projects from '@/data/projects';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,6 +8,7 @@ interface ProjectPageProps {
   params: {
     title: string;
   };
+  searchParams?: Promise<URLSearchParams>;
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {
