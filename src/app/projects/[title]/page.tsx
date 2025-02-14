@@ -3,7 +3,7 @@ import projects from '@/data/projects'; // You'll need to create this data file
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Add proper type definition for props
+
 interface ProjectPageProps {
   params: {
     title: string;
