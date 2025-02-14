@@ -60,10 +60,16 @@ export default function About() {
             <div className="p-8 bg-white rounded-xl shadow-lg border border-gray-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Education</h2>
               <div className="space-y-6">
+              <div className="border-l-4 border-indigo-600 pl-4">
+                  <h3 className="text-lg font-semibold text-gray-900"> 
+                    O Levels</h3>
+                  <p className="text-gray-600">Maths, Accounting, Urdu, English, Islamiyat, Pakistan Studies, Physics, Chemistry</p>
+                  <p className="text-sm text-gray-500">2018- 2023</p>
+                </div>
                 <div className="border-l-4 border-indigo-600 pl-4">
                   <h3 className="text-lg font-semibold text-gray-900">A Levels</h3>
                   <p className="text-gray-600">Maths, Accounting, Urdu</p>
-                  <p className="text-sm text-gray-500">2022 - Present</p>
+                  <p className="text-sm text-gray-500">2023 - Present</p>
                 </div>
               </div>
             </div>

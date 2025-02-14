@@ -18,7 +18,7 @@ const projects: Project[] = [
   },
   {
     title: 'Sofa Store',
-    description: 'An e-commerce platform with React and Node.js',
+    description: 'An e-commerce platform with Next.js and Tailwind CSS that has a category filter and an search bar on the shop page',
     tags: ['Next.js', 'Tailwind', 'Sanity'],
     image: '/portfolio 2.png',
     link: '/projects/sofa-store',
