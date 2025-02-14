@@ -1,17 +1,14 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import projects from '@/data/projects';
 import Image from 'next/image';
 import Link from 'next/link';
 
-
-interface ProjectPageProps {
-  params: {
-    title: string;
-  };
-  searchParams?: Promise<URLSearchParams>;
+interface PageProps {
+  params: { title: string };
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
+export default function ProjectPage({ params }: PageProps) {
   const project = projects.find(p => 
     p.link === `/projects/${params.title}`
   );
