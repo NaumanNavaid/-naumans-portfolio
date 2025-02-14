@@ -4,11 +4,8 @@ import projects from '@/data/projects';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface PageProps {
-  params: { title: string };
-}
 
-export default function ProjectPage({ params }: PageProps) {
+export default function ProjectPage({ params }: { params: { title: string } }) {
   const project = projects.find(p => 
     p.link === `/projects/${params.title}`
   );
