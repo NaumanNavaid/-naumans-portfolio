@@ -27,8 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
+        {/* Aurora background */}
+        <div className="aurora-background"></div>
+        
         <Navbar />
         <main className="pt-20">{children}</main>
         <Footer />

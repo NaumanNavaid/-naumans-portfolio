@@ -2,20 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
+/* --- Dark Mode Only --- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    --background: #0D0D0F;
+    --foreground: #F8F8F2;
+    --card: #19191D;
+    --border: #2A2A2E;
+    --primary: #8A42E5;
+    --accent: #38BDF8;
+    --primary-foreground: #F8F8F2;
+    --muted: #8E8E93;
+    --shadow: rgba(0, 0, 0, 0.3);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 25px 25px;
 }
+
+/* --- Aurora Background --- */
+.aurora-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(ellipse at 50% 0%, rgba(138, 66, 229, 0.2), transparent 70%),
+                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.15), transparent 70%),
+                radial-gradient(ellipse at 0% 100%, rgba(138, 66, 229, 0.15), transparent 70%);
+    z-index: -1;
+    animation: aurora 20s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes aurora {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Shared Styles --- */
+.bg-gradient-primary {
+    background-image: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+.btn-gradient {
+    background-image: linear-gradient(to right, var(--primary) 0%, var(--accent) 100%);
+    color: var(--primary-foreground);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px 0 var(--shadow);
+    background-size: 200% 100%;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 var(--shadow);
+    background-position: 100% 0;
+}
+
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px var(--shadow);
+    border-color: var(--primary);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* --- Utility classes to map CSS variables --- */
+.text-primary { color: var(--primary); }
+.text-foreground { color: var(--foreground); }
+.text-muted { color: var(--muted); }
+.bg-card { background-color: var(--card); }
+.border-border { border-color: var(--border); }
+
+/* --- Dark Mode Utility Classes --- */
+.bg-primary\/10 { background-color: rgba(138, 66, 229, 0.1); }
+.hover\:bg-accent\/10:hover { background-color: rgba(56, 189, 248, 0.1); }
+.bg-card\/80 { background-color: rgba(25, 25, 29, 0.8); }
+.border-primary\/30 { border-color: rgba(138, 66, 229, 0.3); }
