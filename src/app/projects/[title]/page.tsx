@@ -4,9 +4,10 @@ import projects from '@/data/projects';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export async function generateMetadata({ params }: { params: { title: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ title: string }> }): Promise<Metadata> {
+  const { title } = await params;
   const project = projects.find(p => 
-    p.link === `/projects/${params.title}`
+    p.link === `/projects/${title}`
   );
   
   if (!project) return {};
@@ -17,9 +18,10 @@ export async function generateMetadata({ params }: { params: { title: string } }
   };
 }
 
-export default function ProjectPage({ params }: { params: { title: string } }) {
+export default async function ProjectPage({ params }: { params: Promise<{ title: string }> }) {
+  const { title } = await params;
   const project = projects.find(p => 
-    p.link === `/projects/${params.title}`
+    p.link === `/projects/${title}`
   );
   
   if (!project) return notFound();

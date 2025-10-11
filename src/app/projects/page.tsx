@@ -1,3 +1,7 @@
+// ============================================
+// FILE: src/app/projects/page.tsx
+// ============================================
+
 import Image from 'next/image';
 import Link from 'next/link';
 import projects from '@/data/projects';
@@ -56,14 +60,12 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={project.deploymentLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={project.link}
                   className="btn-gradient w-full py-3 rounded-xl font-semibold text-center block mt-6 group-hover:scale-[1.02] transition-transform"
                 >
                   View Project →
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -87,3 +89,4 @@ export default function Projects() {
     </section>
   );
 }
+
