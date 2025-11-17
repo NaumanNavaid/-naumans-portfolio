@@ -26,10 +26,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        suppressHydrationWarning
       >
+        {/* Prevent theme flash on page load */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                  if (theme === 'dark' || (!theme && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                    document.body.classList.add('dark-mode');
+                  } else {
+                    document.documentElement.classList.add('light');
+                    document.body.classList.remove('dark-mode');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <ThemeProvider>
           {/* Aurora background */}
           <div className="aurora-background"></div>

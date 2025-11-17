@@ -100,18 +100,18 @@ const Hero = () => (
     </div>
     
     <div className="relative fade-in" style={{ animationDelay: '0.1s' }}>
-      <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full group">
-        <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity animate-pulse"></div>
-        <div className="relative rounded-full border-4 border-primary/30 backdrop-blur-sm overflow-hidden shadow-2xl">
-          <img 
-            src="https://placehold.co/320x320/8A42E5/ffffff?text=N" 
-            alt="Profile picture of Nauman" 
-            width={320} 
-            height={320} 
-            className='object-cover w-full h-full transition-transform duration-500 group-hover:scale-105'
+      <div className="relative w-80 h-80 sm:w-96 sm:h-96 rounded-full overflow-hidden group">
+        <div className="absolute inset-0 bg-gradient-primary rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+        <div className="relative rounded-full border-4 border-white/30 backdrop-blur-sm overflow-hidden">
+          <img
+            src="/nauman.jpg"
+            alt="Profile picture of Nauman"
+            width={384}
+            height={384}
+            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
           />
         </div>
-        <div className="absolute -inset-3 rounded-full border-2 border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-spin-slow"></div>
+        <div className="absolute -inset-2 rounded-full border border-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       </div>
     </div>
   </section>
