@@ -12,27 +12,25 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark'); // Default to dark mode
   const [mounted, setMounted] = useState(false);
 
   // Set mounted to true after first render (client-side only)
   useEffect(() => {
     setMounted(true);
-  }, []);
 
-  // Load theme from localStorage or system preference
-  useEffect(() => {
-    if (!mounted) return;
-
+    // Load theme from localStorage or system preference
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     if (savedTheme) {
       setTheme(savedTheme);
     } else if (prefersDark) {
       setTheme('dark');
+    } else {
+      setTheme('dark'); // Default to dark mode
     }
-  }, [mounted]);
+  }, []);
 
   // Apply theme to body and save to localStorage
   useEffect(() => {

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import ThemeToggle from './theme-toggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,6 +46,7 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <ThemeToggle />
             <a href="/contact" className="btn-gradient px-5 py-2 rounded-full text-sm font-medium hidden lg:inline-block">
               Get in Touch
             </a>
@@ -52,6 +54,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <button
               className="p-2 rounded-md text-foreground/80 hover:bg-accent/10 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}

@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- Dark Mode Only --- */
+/* --- Light Mode --- */
 :root {
+    --background: #FFFFFF;
+    --foreground: #1A1A1A;
+    --card: #F8F9FA;
+    --border: #E5E7EB;
+    --primary: #8A42E5;
+    --accent: #38BDF8;
+    --primary-foreground: #FFFFFF;
+    --muted: #6B7280;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* --- Dark Mode --- */
+body.dark-mode {
     --background: #0D0D0F;
     --foreground: #F8F8F2;
     --card: #19191D;
@@ -20,8 +33,13 @@ body {
     color: var(--foreground);
     font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
-    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0);
     background-size: 25px 25px;
+}
+
+/* Dark mode has a more prominent dot pattern */
+body.dark-mode {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
 }
 
 /* --- Aurora Background --- */
@@ -31,12 +49,20 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(ellipse at 50% 0%, rgba(138, 66, 229, 0.2), transparent 70%),
-                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.15), transparent 70%),
-                radial-gradient(ellipse at 0% 100%, rgba(138, 66, 229, 0.15), transparent 70%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(138, 66, 229, 0.15), transparent 70%),
+                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.12), transparent 70%),
+                radial-gradient(ellipse at 0% 100%, rgba(138, 66, 229, 0.1), transparent 70%);
     z-index: -1;
     animation: aurora 20s infinite linear;
     pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+/* Dark mode aurora - more vibrant */
+body.dark-mode .aurora-background {
+    background: radial-gradient(ellipse at 50% 0%, rgba(138, 66, 229, 0.2), transparent 70%),
+                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.15), transparent 70%),
+                radial-gradient(ellipse at 0% 100%, rgba(138, 66, 229, 0.15), transparent 70%);
 }
 
 @keyframes aurora {

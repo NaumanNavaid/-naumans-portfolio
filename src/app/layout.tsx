@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import { ThemeProvider } from '@/app/providers/ThemeProvider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,12 +30,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        {/* Aurora background */}
-        <div className="aurora-background"></div>
-        
-        <Navbar />
-        <main className="pt-20">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          {/* Aurora background */}
+          <div className="aurora-background"></div>
+
+          <Navbar />
+          <main className="pt-20">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
