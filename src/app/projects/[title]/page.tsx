@@ -27,7 +27,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
   if (!project) return notFound();
 
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 fade-in">
+    <section className="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-12 md:py-24 fade-in">
       <div className="mb-12">
         <Link
           href="/#projects"
@@ -76,9 +76,37 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
                 {project.description}
               </p>
             </div>
-            
+
             <div className="bg-card/30 backdrop-blur-md p-8 rounded-3xl border border-border/50">
-              <h3 className="text-2xl font-bold text-foreground mb-6">Project Details</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-8">Case Study</h3>
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <h4 className="text-xl font-semibold text-emerald-500 mb-3">Challenge</h4>
+                  <p className="text-muted/80 leading-relaxed">
+                    {project.challenge}
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-xl font-semibold text-blue-500 mb-3">Solution</h4>
+                  <p className="text-muted/80 leading-relaxed">
+                    Implemented a comprehensive solution using modern technologies and best practices.
+                    The approach focused on scalability, performance, and user experience while ensuring
+                    maintainable code and seamless integration with existing systems.
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-xl font-semibold text-amber-500 mb-3">Outcome</h4>
+                  <p className="text-muted/80 leading-relaxed">
+                    {project.outcome}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card/30 backdrop-blur-md p-8 rounded-3xl border border-border/50">
+              <h3 className="text-2xl font-bold text-foreground mb-6">Technical Details</h3>
               <div className="space-y-6">
                 <div>
                   <h4 className="font-semibold text-foreground text-lg mb-2">Technologies</h4>

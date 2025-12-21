@@ -16,19 +16,20 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
+    { name: 'Services', href: '#services' },
+    { name: 'Process', href: '#process' },
+    { name: 'Case Studies', href: '#work' },
     { name: 'About', href: '/about' },
-    { name: 'Projects', href: '/projects' },
     { name: 'Contact', href: '/contact' },
   ];
 
   return (
     <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? "bg-card/80 backdrop-blur-md border-b border-border/50 py-2 shadow-sm" 
+      scrolled
+        ? "bg-background/95 backdrop-blur-md border-b border-border/50 py-2 shadow-sm supports-[backdrop-filter]:bg-background/60"
         : "bg-transparent py-4"
     }`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
           <a href="/" className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:scale-105 transition-transform">
@@ -36,7 +37,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex flex-1 items-center justify-center space-x-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -48,7 +49,7 @@ const Navbar = () => {
             ))}
             <ThemeToggle />
             <a href="/contact" className="btn-gradient px-5 py-2 rounded-full text-sm font-medium hidden lg:inline-block">
-              Get in Touch
+              Start a Project
             </a>
           </div>
 
@@ -69,7 +70,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-2 rounded-md bg-card/95 backdrop-blur-md border border-border/50">
+          <div className="md:hidden mt-2 rounded-md bg-background/95 backdrop-blur-md border border-border/50 shadow-lg">
             <div className="px-4 py-4 space-y-4">
               {navLinks.map((link) => (
                 <a
@@ -81,12 +82,12 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <a 
+              <a
                 href="/contact"
                 className="btn-gradient block w-full text-center py-3 rounded-lg text-sm font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Get in Touch
+                Start a Project
               </a>
             </div>
           </div>

@@ -15,6 +15,19 @@
     --shadow: rgba(0, 0, 0, 0.1);
 }
 
+/* --- Light Mode --- */
+body.light-mode {
+    --background: #FFFFFF;
+    --foreground: #1A1A1A;
+    --card: #F8F9FA;
+    --border: #E5E7EB;
+    --primary: #8A42E5;
+    --accent: #38BDF8;
+    --primary-foreground: #FFFFFF;
+    --muted: #6B7280;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
 /* --- Dark Mode --- */
 body.dark-mode {
     --background: #0D0D0F;
@@ -31,15 +44,21 @@ body.dark-mode {
 body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
-    background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0);
-    background-size: 25px 25px;
+    background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.02) 1px, transparent 0);
+    background-size: 30px 30px;
+    letter-spacing: -0.01em;
 }
 
-/* Dark mode has a more prominent dot pattern */
+/* Light mode specific styles */
+body.light-mode {
+    background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.02) 1px, transparent 0);
+}
+
+/* Dark mode specific styles */
 body.dark-mode {
-    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
 }
 
 /* --- Aurora Background --- */
@@ -49,20 +68,29 @@ body.dark-mode {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(ellipse at 50% 0%, rgba(138, 66, 229, 0.15), transparent 70%),
-                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.12), transparent 70%),
-                radial-gradient(ellipse at 0% 100%, rgba(138, 66, 229, 0.1), transparent 70%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(138, 66, 229, 0.08), transparent 70%),
+                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.06), transparent 70%),
+                radial-gradient(ellipse at 0% 100%, rgba(138, 66, 229, 0.05), transparent 70%);
     z-index: -1;
-    animation: aurora 20s infinite linear;
+    animation: aurora 30s infinite linear;
     pointer-events: none;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+/* Light mode aurora - more subtle */
+body.light-mode .aurora-background {
+    background: radial-gradient(ellipse at 50% 0%, rgba(138, 66, 229, 0.05), transparent 70%),
+                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.03), transparent 70%),
+                radial-gradient(ellipse at 0% 100%, rgba(138, 66, 229, 0.02), transparent 70%);
+    opacity: 0.3;
 }
 
 /* Dark mode aurora - more vibrant */
 body.dark-mode .aurora-background {
-    background: radial-gradient(ellipse at 50% 0%, rgba(138, 66, 229, 0.2), transparent 70%),
-                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.15), transparent 70%),
-                radial-gradient(ellipse at 0% 100%, rgba(138, 66, 229, 0.15), transparent 70%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(138, 66, 229, 0.12), transparent 70%),
+                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.08), transparent 70%),
+                radial-gradient(ellipse at 0% 100%, rgba(138, 66, 229, 0.06), transparent 70%);
+    opacity: 0.5;
 }
 
 @keyframes aurora {
@@ -109,6 +137,29 @@ body.dark-mode .aurora-background {
     opacity: 0;
 }
 
+/* --- Improved Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+}
+
+p {
+    line-height: 1.7;
+}
+
+/* --- Professional Button Styles --- */
+.btn-professional {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.5);
+    transition: all 0.3s ease;
+}
+
+.btn-professional:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -10px rgba(102, 126, 234, 0.6);
+}
+
 /* --- Utility classes to map CSS variables --- */
 .text-primary { color: var(--primary); }
 .text-foreground { color: var(--foreground); }
@@ -121,3 +172,16 @@ body.dark-mode .aurora-background {
 .hover\:bg-accent\/10:hover { background-color: rgba(56, 189, 248, 0.1); }
 .bg-card\/80 { background-color: rgba(25, 25, 29, 0.8); }
 .border-primary\/30 { border-color: rgba(138, 66, 229, 0.3); }
+
+/* --- Cleaner Card Styles --- */
+.bg-card\/30 {
+    background: rgba(var(--card-rgb), 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.bg-card\/50 {
+    background: rgba(var(--card-rgb), 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}

@@ -38,15 +38,28 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Apply theme to body and save to localStorage
   useEffect(() => {
     if (mounted && typeof window !== 'undefined') {
+      const body = document.body;
+      const html = document.documentElement;
+
+      // Force cleanup of any existing theme classes first
+      body.classList.remove('dark-mode', 'light-mode');
+      html.classList.remove('dark', 'light');
+
+      // Apply new theme classes
       if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
+        body.classList.add('dark-mode');
+        html.classList.add('dark');
       } else {
-        document.body.classList.remove('dark-mode');
-        document.documentElement.classList.add('light');
-        document.documentElement.classList.remove('dark');
+        // Ensure light mode has proper styling
+        body.classList.add('light-mode');
+        html.classList.add('light');
       }
+
+      // Force a repaint to ensure styles are applied immediately
+      body.style.display = 'none';
+      body.offsetHeight; // Trigger reflow
+      body.style.display = '';
+
       localStorage.setItem('theme', theme);
     }
   }, [theme, mounted]);
