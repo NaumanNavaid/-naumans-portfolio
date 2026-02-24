@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from '@/app/providers/ThemeProvider';
 
 export default function ThemeToggle() {

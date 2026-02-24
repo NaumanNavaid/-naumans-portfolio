@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import { ThemeProvider } from '@/app/providers/ThemeProvider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nauman's Portfolio",
-  description: "Nauman's Portfolio",
+  title: "Syed Nauman Navaid | Full-Stack Developer",
+  description: "Full-stack developer specializing in modern web applications with AI-assisted workflows. Next.js, React, TypeScript, FastAPI, Python.",
 };
 
 export default function RootLayout({
@@ -26,40 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-        suppressHydrationWarning
       >
-        {/* Prevent theme flash on page load */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-                  if (theme === 'dark' || (!theme && prefersDark)) {
-                    document.documentElement.classList.add('dark');
-                    document.body.classList.add('dark-mode');
-                  } else {
-                    document.documentElement.classList.add('light');
-                    document.body.classList.remove('dark-mode');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-        <ThemeProvider>
-          {/* Aurora background */}
-          <div className="aurora-background"></div>
-
-          <Navbar />
-          <main className="pt-20">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

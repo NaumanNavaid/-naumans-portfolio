@@ -1,172 +1,286 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import projects from '@/data/projects';
 import Image from 'next/image';
 import Link from 'next/link';
+import {
+  ArrowRightIcon,
+  ExternalLinkIcon,
+  Code2Icon,
+  CheckIcon,
+  CalendarIcon,
+  BarChartIcon,
+  ClockIcon,
+  UserIcon,
+  FolderIcon,
+  ArrowLeftIcon
+} from 'lucide-react';
+import projects from '@/data/projects';
 
 export async function generateMetadata({ params }: { params: Promise<{ title: string }> }): Promise<Metadata> {
   const { title } = await params;
-  const project = projects.find(p =>
-    p.link === `/projects/${title}`
-  );
+  const project = projects.find(p => p.link === `/projects/${title}`);
 
   if (!project) return {};
 
   return {
-    title: `${project.title} - Nauman's Portfolio`,
+    title: `${project.title} - Case Study | Nauman`,
     description: project.description,
   };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ title: string }> }) {
   const { title } = await params;
-  const project = projects.find(p =>
-    p.link === `/projects/${title}`
-  );
+  const project = projects.find(p => p.link === `/projects/${title}`);
 
   if (!project) return notFound();
 
   return (
-    <section className="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-32 fade-in">
-      <div className="mb-8 md:mb-12">
+    <main>
+      {/* Header */}
+      <section className="pt-32 pb-8 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
         <Link
-          href="/#projects"
-          className="text-primary hover:text-accent font-semibold flex items-center group w-fit text-sm md:text-base"
+          href="/projects"
+          className="inline-flex items-center gap-2 text-muted hover:text-accent transition-colors mb-6"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 mr-2 group-hover:-translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-          </svg>
-          Back to Projects
+          <ArrowLeftIcon className="w-4 h-4" />
+          Back to Case Studies
         </Link>
-      </div>
 
-      <div className="space-y-8 md:space-y-12">
-        <div className="space-y-4 md:space-y-6">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-foreground tracking-tight">
-            {project.title}
-          </h1>
-          <div className="flex flex-wrap gap-2 md:gap-3">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-medium bg-primary/10 text-primary rounded-xl border border-primary/20"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full mb-6">
+          <FolderIcon className="w-4 h-4 text-accent" />
+          <span className="text-sm font-semibold text-accent tracking-wide">CASE STUDY</span>
         </div>
 
-        <div className="relative rounded-3xl overflow-hidden border border-border/50 shadow-2xl group">
-          <div className="absolute inset-0 bg-gradient-to-t from-card/50 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+          {project.title}
+        </h1>
+
+        <p className="text-xl text-muted max-w-3xl">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-3 mt-6">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="badge badge-accent"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto pb-16">
+        <div className="relative rounded-2xl overflow-hidden border border-border">
           <Image
             src={project.image}
             alt={project.title}
             width={1200}
             height={600}
-            className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-auto object-cover"
             unoptimized
           />
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
-          <div className="md:col-span-2 space-y-6 md:space-y-8 lg:space-y-10">
-            <div className="bg-card/30 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-border/50">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6">Project Overview</h2>
-              <p className="text-muted/90 text-sm md:text-base lg:text-lg leading-relaxed">
-                {project.description}
+      {/* Case Study Content */}
+      <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto pb-16">
+        <div className="grid lg:grid-cols-3 gap-12">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Challenge */}
+            <div className="card-premium">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-xl bg-amber-500/10">
+                  <BarChartIcon className="w-6 h-6 text-amber-500" />
+                </div>
+                <h2 className="text-2xl font-bold text-foreground">The Challenge</h2>
+              </div>
+              <p className="text-muted leading-relaxed">
+                {project.challenge || "Building a scalable solution that addresses complex business requirements while maintaining excellent user experience and performance."}
               </p>
             </div>
 
-            <div className="bg-card/30 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-border/50">
-              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-6 md:mb-8">Case Study</h3>
-              <div className="space-y-6 md:space-y-8">
-                <div className="space-y-3 md:space-y-4">
-                  <h4 className="text-lg md:text-xl font-semibold text-emerald-500 mb-2 md:mb-3">Challenge</h4>
-                  <p className="text-muted/80 text-sm md:text-base leading-relaxed">
-                    {project.challenge}
-                  </p>
+            {/* Solution */}
+            <div className="card-premium">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-xl bg-blue-500/10">
+                  <CheckIcon className="w-6 h-6 text-blue-500" />
                 </div>
-
-                <div className="space-y-3 md:space-y-4">
-                  <h4 className="text-lg md:text-xl font-semibold text-blue-500 mb-2 md:mb-3">Solution</h4>
-                  <p className="text-muted/80 text-sm md:text-base leading-relaxed">
-                    Implemented a comprehensive solution using modern technologies and best practices.
-                    The approach focused on scalability, performance, and user experience while ensuring
-                    maintainable code and seamless integration with existing systems.
-                  </p>
+                <h2 className="text-2xl font-bold text-foreground">The Solution</h2>
+              </div>
+              <p className="text-muted leading-relaxed mb-4">
+                I implemented a comprehensive solution using modern technologies and best practices.
+                The approach focused on scalability, performance, and user experience while ensuring
+                maintainable code and seamless integration.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="flex gap-2">
+                  <CheckIcon className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-foreground">Full-stack architecture</span>
                 </div>
-
-                <div className="space-y-3 md:space-y-4">
-                  <h4 className="text-lg md:text-xl font-semibold text-amber-500 mb-2 md:mb-3">Outcome</h4>
-                  <p className="text-muted/80 text-sm md:text-base leading-relaxed">
-                    {project.outcome}
-                  </p>
+                <div className="flex gap-2">
+                  <CheckIcon className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-foreground">Modern tech stack</span>
+                </div>
+                <div className="flex gap-2">
+                  <CheckIcon className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-foreground">Responsive design</span>
+                </div>
+                <div className="flex gap-2">
+                  <CheckIcon className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-foreground">Production-ready code</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-card/30 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-border/50">
-              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4 md:mb-6">Technical Details</h3>
-              <div className="space-y-4 md:space-y-6">
+            {/* Outcome */}
+            {project.outcome && (
+              <div className="card-premium">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-xl bg-success/10">
+                    <CheckIcon className="w-6 h-6 text-success" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-foreground">The Outcome</h2>
+                </div>
+                <p className="text-muted leading-relaxed">
+                  {project.outcome}
+                </p>
+              </div>
+            )}
+
+            {/* Technical Details */}
+            <div className="card-premium">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 rounded-xl bg-accent/10">
+                  <Code2Icon className="w-6 h-6 text-accent" />
+                </div>
+                <h2 className="text-2xl font-bold text-foreground">Technical Details</h2>
+              </div>
+              <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground text-base md:text-lg mb-2">Technologies</h4>
+                  <h3 className="font-semibold text-foreground mb-2">Technologies Used</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 md:px-3 py-1 md:py-1.5 text-xs md:text-sm font-medium bg-primary/10 text-primary rounded-lg border border-primary/20"
+                        className="px-3 py-1.5 text-sm bg-background border border-border rounded-lg text-muted"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-foreground text-base md:text-lg mb-2">Project Type</h4>
-                  <p className="text-muted/80 text-sm md:text-base">Web Application</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground text-base md:text-lg mb-2">Role</h4>
-                  <p className="text-muted/80 text-sm md:text-base">Full Stack Developer</p>
+                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
+                  <div>
+                    <p className="text-sm text-muted">Project Type</p>
+                    <p className="font-medium text-foreground">Web Application</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted">Role</p>
+                    <p className="font-medium text-foreground">Full-Stack Developer</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="space-y-4 md:space-y-6">
-            <div className="bg-card/30 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-border/50 sticky top-20 md:top-24">
-              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4 md:mb-6">Quick Links</h3>
-              <div className="space-y-3 md:space-y-4">
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Project Info Card */}
+            <div className="card-premium sticky top-24">
+              <h3 className="font-bold text-foreground mb-4">Project Actions</h3>
+              <div className="space-y-3">
                 <a
                   href={project.deploymentLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-gradient w-full py-3 md:py-4 rounded-xl font-semibold text-center flex items-center justify-center gap-2 group text-sm md:text-base"
+                  className="btn-primary w-full justify-center"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 001.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                  </svg>
-                  Live Demo
+                  <ExternalLinkIcon className="w-4 h-4" />
+                  View Live Site
                 </a>
-                <Link
-                  href="/#projects"
-                  className="w-full block text-center py-3 md:py-4 bg-card/50 border-2 border-border/50 text-foreground font-semibold rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all text-sm md:text-base"
-                >
-                  ← All Projects
-                </Link>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary w-full justify-center"
+                  >
+                    <Code2Icon className="w-5 h-5" />
+                    View Source
+                  </a>
+                )}
                 <Link
                   href="/contact"
-                  className="w-full block text-center py-3 md:py-4 bg-card/50 border-2 border-border/50 text-foreground font-semibold rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all text-sm md:text-base"
+                  className="w-full block text-center py-3 bg-background border border-border rounded-xl hover:border-accent transition-colors font-medium"
                 >
-                  Get in Touch
+                  Start Similar Project
                 </Link>
               </div>
+
+              <div className="pt-6 mt-6 border-t border-border">
+                <div className="flex items-center gap-3 mb-4">
+                  <ClockIcon className="w-5 h-5 text-accent" />
+                  <div>
+                    <p className="text-xs text-muted">Response Time</p>
+                    <p className="font-medium text-foreground">&lt; 24 hours</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Card */}
+            <div className="bg-card-alt p-6 rounded-2xl border border-border text-center">
+              <p className="text-sm text-muted mb-4">
+                Need a similar solution for your business?
+              </p>
+              <Link
+                href="/contact"
+                className="btn-primary w-full justify-center"
+              >
+                Let's Talk
+                <ArrowRightIcon className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Related Projects */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto bg-card-alt -mx-4 sm:-mx-6 lg:-mx-8 xl:-mx-16 px-4 sm:px-6 lg:px-8 xl:px-16">
+        <h2 className="text-2xl font-bold text-foreground mb-8">More Case Studies</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {projects.filter(p => p.title !== project.title).slice(0, 3).map((relatedProject) => (
+            <Link
+              key={relatedProject.title}
+              href={relatedProject.link}
+              className="card-premium p-0 overflow-hidden group"
+            >
+              <div className="aspect-video bg-card-alt overflow-hidden">
+                <Image
+                  src={relatedProject.image}
+                  alt={relatedProject.title}
+                  width={400}
+                  height={225}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  unoptimized
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="font-bold text-foreground group-hover:text-accent transition-colors">
+                  {relatedProject.title}
+                </h3>
+                <p className="text-sm text-muted mt-1 line-clamp-2">
+                  {relatedProject.description}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
