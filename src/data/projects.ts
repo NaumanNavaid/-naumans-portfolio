@@ -7,6 +7,7 @@ export interface Project {
   image: string;
   link: string;
   deploymentLink: string;
+  linkedinLink?: string;
 }
 
 const projects: Project[] = [
@@ -19,6 +20,7 @@ const projects: Project[] = [
     image: '/cv crafter.png',
     link: '/projects/cv-crafter',
     deploymentLink: 'https://www.cvcrafterpk.com',
+    linkedinLink: 'https://linkedin.com',
   },
   {
     title: 'AI Book Chatbot (RAG System)',
@@ -29,6 +31,7 @@ const projects: Project[] = [
     image: '/Book with rag chatbot.png',
     link: '/projects/rag-chatbot',
     deploymentLink: 'https://naumannavaid.github.io/ai-native-textbook-docusaurus/',
+    linkedinLink: 'https://linkedin.com',
   },
   {
     title: 'Inventory Management Portal',
@@ -39,6 +42,7 @@ const projects: Project[] = [
     image: '/inventory managemnt portal.png',
     link: '/projects/inventory-portal',
     deploymentLink: 'https://inventory-tracking-cyan.vercel.app/',
+    linkedinLink: 'https://linkedin.com',
   },
   {
     title: 'Art Gallery Platform with CMS',
@@ -49,6 +53,7 @@ const projects: Project[] = [
     image: '/Art galllery.png',
     link: '/projects/art-gallery',
     deploymentLink: 'https://shameer-portfolio-delta.vercel.app/',
+    linkedinLink: 'https://linkedin.com',
   },
   {
     title: 'AI-Powered To-Do Application',
@@ -59,6 +64,7 @@ const projects: Project[] = [
     image: '/Ai powered Todo app.png',
     link: '/projects/ai-todo',
     deploymentLink: 'https://todo-app-phase-2-and-3.vercel.app/',
+    linkedinLink: 'https://linkedin.com',
   },
   {
     title: 'Construction Company Website',
@@ -69,6 +75,7 @@ const projects: Project[] = [
     image: '/Construction Company website.png',
     link: '/projects/construction-website',
     deploymentLink: 'https://asna-construction.vercel.app/',
+    linkedinLink: 'https://linkedin.com',
   },
   {
     title: 'Responsive Landing Page',
@@ -79,6 +86,7 @@ const projects: Project[] = [
     image: '/Landing page.png',
     link: '/projects/landing-page',
     deploymentLink: 'https://assignment-6-one-gamma.vercel.app/',
+    linkedinLink: 'https://linkedin.com',
   }
 ];
 

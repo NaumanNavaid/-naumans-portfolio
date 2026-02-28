@@ -6,9 +6,9 @@ import {
   MapPinIcon,
   CheckIcon,
   ClockIcon,
-  CalendarIcon,
   SendIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  Linkedin
 } from 'lucide-react';
 
 export const metadata = {
@@ -19,210 +19,111 @@ export const metadata = {
 export default function ContactPage() {
   const contactMethods = [
     {
-      icon: <MailIcon className="w-6 h-6" />,
+      icon: <MailIcon className="w-5 h-5" />,
       title: "Email",
       value: "naumannavad378@gmail.com",
-      href: "mailto:naumannavad378@gmail.com",
-      description: "Best for detailed inquiries"
+      href: "mailto:naumannavad378@gmail.com"
     },
     {
-      icon: <PhoneIcon className="w-6 h-6" />,
+      icon: <PhoneIcon className="w-5 h-5" />,
       title: "Phone",
       value: "+92 309 1273446",
-      href: "tel:+923091273446",
-      description: "Mon-Fri, 9am-6pm PKT"
+      href: "tel:+923091273446"
     },
     {
-      icon: <CalendarIcon className="w-6 h-6" />,
-      title: "Portfolio",
-      value: "View Online",
-      href: "https://naumans-portfolio-kappa.vercel.app",
-      description: "Live projects showcase",
+      icon: <Linkedin className="w-5 h-5" />,
+      title: "LinkedIn",
+      value: "Connect",
+      href: "https://linkedin.com/in/nauman",
       external: true
     }
   ];
 
-  const whatToInclude = [
-    "Project overview and business goals",
-    "Target audience and user needs",
-    "Timeline and budget range",
-    "Reference websites or inspiration"
-  ];
-
-  const faqItems = [
-    {
-      question: "What's your typical project timeline?",
-      answer: "Most MVPs are delivered in 4-8 weeks. Complex projects may take longer. I'll provide a detailed timeline after understanding your requirements."
-    },
-    {
-      question: "Do you work with startups and enterprises?",
-      answer: "Yes! I partner with startups, SMBs, and established enterprises. Each engagement is tailored to your specific needs and goals."
-    },
-    {
-      question: "What's your pricing model?",
-      answer: "I offer both project-based and hourly pricing depending on the engagement type. Let's discuss to find what works best for you."
-    },
-    {
-      question: "Do you provide ongoing support after launch?",
-      answer: "Absolutely. I offer maintenance packages and ongoing support to ensure your product continues to perform optimally."
-    }
-  ];
-
   return (
-    <main>
+    <main className="pb-32">
       {/* Hero */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full mb-6">
-            <SendIcon className="w-4 h-4 text-accent" />
-            <span className="text-sm font-semibold text-accent tracking-wide">GET IN TOUCH</span>
+      <section className="pt-48 pb-24 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
+        <div className="max-w-4xl">
+          <div className="inline-flex items-center gap-2 mb-8">
+            <span className="text-mono">CONTACT</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Let's Build Your<br />
-            <span className="text-gradient-premium">Next Product</span>
+          <h1 className="text-display-md lg:text-display-lg font-extrabold mb-12 tracking-tightest leading-[0.9]">
+            Let's <span className="text-accent">Connect</span>
           </h1>
 
-          <p className="text-xl text-muted leading-relaxed">
-            Have a project in mind? I'd love to hear about it. Reach out and let's discuss how I can help transform your vision into reality.
+          <p className="text-2xl text-muted leading-relaxed max-w-2xl">
+            Have a project in mind? Reach out and let's discuss how I can help transform your <span className="text-foreground">vision</span> into a <span className="text-foreground">product</span>.
           </p>
         </div>
       </section>
 
       {/* Contact Methods */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
+      <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6">
-          {contactMethods.map((method, idx) => (
+          {contactMethods.map((method) => (
             <a
               key={method.title}
               href={method.href}
               target={method.external ? "_blank" : undefined}
               rel={method.external ? "noopener noreferrer" : undefined}
-              className="card-premium group text-center"
+              className="glass rounded-[32px] p-8 group hover:translate-y-[-8px] transition-all duration-500 shadow-spatial-sm hover:shadow-spatial-md text-center"
             >
-              <div className="inline-flex p-4 rounded-xl bg-accent/10 mb-4 text-accent group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center text-foreground mx-auto mb-8 group-hover:bg-foreground group-hover:text-background transition-colors duration-500">
                 {method.icon}
               </div>
-              <h3 className="font-bold text-lg text-foreground mb-2">{method.title}</h3>
-              <p className="text-accent font-semibold mb-2 group-hover:underline">
+              <h3 className="text-mono mb-4">{method.title}</h3>
+              <p className="text-xl font-bold tracking-tighter group-hover:underline decoration-1 underline-offset-8">
                 {method.value}
               </p>
-              <p className="text-sm text-muted">{method.description}</p>
             </a>
           ))}
         </div>
       </section>
 
-      {/* What to Include */}
-      <section className="py-16 bg-card-alt">
-        <div className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Message Section */}
+      <section className="pt-48 pb-24 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-5xl mx-auto">
+        <div className="glass rounded-[60px] p-12 md:p-24 shadow-spatial-lg relative overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-foreground mb-6">
-                What to Include in Your Message
+              <h2 className="text-3xl font-bold tracking-tightest leading-tight mb-8">
+                Direct Communication is key.
               </h2>
-              <p className="text-muted mb-8 leading-relaxed">
-                The more details you provide, the better I can understand your needs and provide accurate guidance. Don't worry if you're not sure about everything—we can figure it out together.
+              <p className="text-muted text-lg mb-12 leading-relaxed">
+                I respond to all serious inquiries within 24 hours. Whether you need a full-stack architect or an AI specialist, let's start with a simple conversation.
               </p>
-              <ul className="space-y-4">
-                {whatToInclude.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-success/10 flex items-center justify-center mt-0.5">
-                      <CheckIcon className="w-4 h-4 text-success" />
-                    </div>
-                    <span className="text-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="card-elevated bg-card">
-              <div className="text-center mb-6">
-                <div className="inline-flex p-4 rounded-2xl bg-accent/10 mb-4">
-                  <MailIcon className="w-8 h-8 text-accent" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  Send Me a Message
-                </h3>
-                <p className="text-muted">
-                  I respond to all inquiries within 24 hours
-                </p>
-              </div>
-
+              
               <a
                 href="mailto:naumannavad378@gmail.com"
-                className="btn-primary w-full"
-                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                className="btn-minimal-primary px-12 py-5 text-lg inline-flex items-center gap-4"
               >
+                Send Message
                 <SendIcon className="w-5 h-5" />
-                Compose Email
               </a>
+            </div>
 
-              <div className="mt-6 pt-6 border-t border-border text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-success/10 rounded-full">
-                  <ClockIcon className="w-4 h-4 text-success" />
-                  <span className="text-sm font-medium text-success">
-                    Avg. response: 24 hours
-                  </span>
+            <div className="space-y-6">
+              {[
+                "AI-Powered SaaS Platforms",
+                "MVP Product Engineering",
+                "Full-Stack Web Apps",
+                "Strategic Technical Consulting"
+              ].map(item => (
+                <div key={item} className="flex items-center gap-4 text-mono">
+                  <div className="w-2 h-2 rounded-full bg-blue-500" />
+                  {item}
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-muted">
-            Quick answers to common questions about working together
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          {faqItems.map((item, idx) => (
-            <div key={idx} className="card-premium">
-              <h3 className="font-semibold text-lg text-foreground mb-2">
-                {item.question}
-              </h3>
-              <p className="text-muted leading-relaxed">
-                {item.answer}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 xl:px-16">
-        <div className="card-elevated bg-card text-center max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-muted mb-8">
-            Let's discuss how I can help bring your vision to life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:naumannavad378@gmail.com"
-              className="btn-premium"
-            >
-              <MailIcon className="w-5 h-5" />
-              Send Email
-              <ArrowRightIcon className="w-5 h-5" />
-            </a>
-            <Link
-              href="/"
-              className="btn-secondary"
-            >
-              <ArrowRightIcon className="w-5 h-5 rotate-180" />
-              Back to Home
-            </Link>
-          </div>
-        </div>
+      {/* CTA Back */}
+      <section className="pt-24 text-center">
+        <Link href="/" className="text-mono border-b border-foreground/20 hover:border-foreground transition-colors pb-1">
+          Back to Home
+        </Link>
       </section>
     </main>
   );

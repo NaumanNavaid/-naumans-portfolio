@@ -1,0 +1,284 @@
+% !TeX program = xelatex
+\documentclass[a4paper,10pt]{article}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+
+% ============================================================
+% PAGE GEOMETRY
+% ============================================================
+\geometry{
+    left=20mm,
+    right=20mm,
+    top=20mm,
+    bottom=20mm
+}
+
+% ============================================================
+% COLORS (Matching Portfolio)
+% ============================================================
+\definecolor{accent}{HTML}{3B82F6}      % Blue #3B82F6
+\definecolor{accentdark}{HTML}{2563EB}  % Dark Blue
+\definecolor{purple}{HTML}{8B5CF6}      % Purple #8B5CF6
+\definecolor{dark}{HTML}{0A0A0B}        % Navy/Black
+\definecolor{gray}{HTML}{6B7280}        % Muted Gray
+\definecolor{lightgray}{HTML}{F3F4F6}   % Light Background
+\definecolor{success}{HTML}{10B981}     % Green
+\definecolor{gold}{HTML}{B8860B}        % Gold
+
+% ============================================================
+% FONTS
+% ============================================================
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \setsansfont[
+    BoldFont={Inter Bold},
+    ItalicFont={Inter Italic}
+  ]{Inter Regular}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{helvet}
+\fi
+
+% ============================================================
+% HYPERREF SETUP
+% ============================================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=accent,
+    pdfauthor={Syed Nauman Navaid},
+    pdftitle={CV - Syed Nauman Navaid},
+}
+
+% ============================================================
+% TITLESEC FORMATTING
+% ============================================================
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{dark}}
+  {}
+  {0em}
+  {}[
+  \titlerule[0.5pt]
+  \vspace{0.5em}
+  ]
+
+\titlespacing{\section}{0pt}{12pt plus 2pt minus 2pt}{8pt plus 2pt minus 2pt}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{dark}}
+  {}
+  {0em}
+  {}
+
+\titlespacing{\subsection}{0pt}{6pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+
+% Accent bar for sections
+\newcommand{\accentbar}{
+    \begin{tikzpicture}
+        \fill[accent] (0,0) rectangle (4,0.15);
+        \fill[purple] (4,0) rectangle (8,0.15);
+    \end{tikzpicture}
+    \par
+    \vspace{-4pt}
+}
+
+% Tech badge
+\newcommand{\techbadge}[1]{
+    \tikz[baseline=(n.base)]{
+        \node(n)[inner sep=4pt, rounded corners=4pt, fill=accent!10, draw=accent!30, text=accent, font=\footnotesize]{#1};
+    }%
+}
+
+% Gold badge
+\newcommand{\goldbadge}[1]{
+    \tikz[baseline=(n.base)]{
+        \node(n)[inner sep=4pt, rounded corners=4pt, fill=gold!10, draw=gold!30, text=gold, font=\footnotesize]{#1};
+    }%
+}
+
+% Contact info item
+\newcommand{\contactitem}[3]{
+    \textcolor{accent}{\faIcon{#1}} \textbf{#2}: \href{#3}{#3}
+}
+
+% Project entry
+\newcommand{\projectentry}[5]{
+    \textbf{\large #1} \hfill \textcolor{gray}{\small #2}\\
+    \textcolor{accent}{\small #3}\\
+    \vspace{0.3em}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        #4
+    \end{itemize}
+    \vspace{0.5em}
+}
+
+% ============================================================
+% DOCUMENT BEGIN
+% ============================================================
+\begin{document}
+
+% ------------------------------------------------------------
+% HEADER
+% ------------------------------------------------------------
+\begin{tikzpicture}[remember picture, overlay]
+    \fill[accent] (current page.north west) rectangle ([yshift=-0.3cm]current page.north east);
+\end{tikzpicture}
+
+\vspace{0.5cm}
+
+\begin{center}
+    {\Huge \bfseries \color{dark} Syed \textcolor{accent}{Nauman} Navaid}\\[0.3cm]
+    {\Large \color{accent} Full-Stack Developer}\\[0.6cm]
+
+    \begin{tabular}{c c}
+        \faIcon{envelope} \href{mailto:naumannavad378@gmail.com}{naumannavad378@gmail.com} &
+        \faIcon{phone} \href{tel:+923091273446}{+92 309 1273446} \\[0.2cm]
+        \faIcon{globe} \href{https://naumans-portfolio-kappa.vercel.app}{naumans-portfolio-kappa.vercel.app} &
+        \faIcon{map-marker-alt} Karachi, Pakistan
+    \end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+% ------------------------------------------------------------
+% SUMMARY
+% ------------------------------------------------------------
+\section{Professional Summary}
+
+\accentbar
+
+Full-stack developer specializing in modern web applications with AI-assisted workflows. Experienced in building responsive websites, dashboards, and AI-integrated applications using Next.js, React, TypeScript, and FastAPI. Proficient in leveraging AI tools for rapid prototyping, debugging, and prompt engineering. \textbf{Seeking internship or junior developer role} to contribute technical skills and grow in a professional environment.
+
+% ------------------------------------------------------------
+% TECHNICAL SKILLS
+% ------------------------------------------------------------
+\section{Technical Skills}
+
+\accentbar
+
+\begin{tabular}{p{0.15\textwidth} p{0.8\textwidth}}
+    \textbf{Frontend} &
+    \techbadge{Next.js} \techbadge{React} \techbadge{TypeScript} \techbadge{JavaScript (ES6+)} \techbadge{Tailwind CSS} \techbadge{HTML5} \techbadge{CSS3} \\[0.3cm]
+
+    \textbf{Backend} &
+    \techbadge{Node.js} \techbadge{Express.js} \techbadge{FastAPI} \techbadge{Python} \techbadge{REST APIs} \techbadge{Authentication} \\[0.3cm]
+
+    \textbf{Databases/CMS} &
+    \techbadge{PostgreSQL} \techbadge{MongoDB} \techbadge{Supabase} \techbadge{Sanity CMS} \techbadge{Qdrant} \\[0.3cm]
+
+    \textbf{AI \& Workflow} &
+    \goldbadge{AI-Assisted Development} \goldbadge{Prompt Engineering} \goldbadge{RAG Systems} \goldbadge{Vector DBs} \goldbadge{OpenAI API} \\[0.3cm]
+
+    \textbf{Tools/DevOps} &
+    \techbadge{Git/GitHub} \techbadge{Vercel} \techbadge{Postman} \techbadge{Docker}
+\end{tabular}
+
+% ------------------------------------------------------------
+% PROJECTS
+% ------------------------------------------------------------
+\section{Projects}
+
+\accentbar
+
+\projectentry{CV Crafter}{Next.js, TypeScript, FastAPI}{
+    \textbf{Tech:} \techbadge{Next.js} \techbadge{TypeScript} \techbadge{FastAPI}
+}{
+    \item Built full-stack platform where users can get custom-made resumes from professionals
+    \item Implemented interactive form system with real-time CV preview and modular component architecture
+    \item Designed responsive UI with focus on UX and cross-device compatibility
+}
+
+\projectentry{AI Book Chatbot (RAG System)}{FastAPI, Python, Qdrant, OpenAI API}{
+    \textbf{Tech:} \techbadge{FastAPI} \techbadge{Python} \techbadge{Qdrant} \techbadge{OpenAI API}
+}{
+    \item Developed Retrieval-Augmented Generation chatbot for querying book content with context-aware responses
+    \item Implemented document embeddings pipeline and vector similarity search using Qdrant
+    \item Built scalable REST API with proper error handling and validation
+}
+
+\projectentry{Inventory Management Portal}{Next.js, FastAPI, PostgreSQL, Supabase}{
+    \textbf{Tech:} \techbadge{Next.js} \techbadge{FastAPI} \techbadge{PostgreSQL} \techbadge{Supabase}
+}{
+    \item Developed full-stack application with authentication, real-time stock tracking, and reporting
+    \item Implemented comprehensive CRUD operations with full data validation
+    \item Built responsive dashboard UI with real-time updates and exportable reports
+}
+
+\projectentry{Art Gallery Platform with CMS}{Next.js, Sanity CMS, PostgreSQL}{
+    \textbf{Tech:} \techbadge{Next.js} \techbadge{Sanity CMS} \techbadge{PostgreSQL}
+}{
+    \item Designed dynamic gallery platform with custom admin CMS for artwork and artist metadata
+    \item Developed category system, filtering, and search functionality
+    \item Optimized image handling with lazy loading for high-quality display
+}
+
+% ------------------------------------------------------------
+% EXPERIENCE
+% ------------------------------------------------------------
+\section{Experience}
+
+\accentbar
+
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item[] \textbf{\large Freelance Web Developer} \hfill \textcolor{gray}{2023 -- Present}\\
+    \textcolor{gray}{\small Karachi, Pakistan}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=4pt]
+        \item Deliver responsive web applications and dashboards for small businesses
+        \item Convert Figma designs into production-ready code
+        \item Build AI-integrated applications and content management platforms
+        \item Manage full-stack development from backend APIs to frontend UI/UX
+    \end{itemize}
+\end{itemize}
+
+% ------------------------------------------------------------
+% EDUCATION
+% ------------------------------------------------------------
+\section{Education}
+
+\accentbar
+
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item[] \textbf{\large A-Levels} \hfill \\[0.2cm]
+    \textcolor{gray}{Karachi, Pakistan}\\
+    Subjects: \techbadge{Accounting} \techbadge{Mathematics} \techbadge{Urdu}
+\end{itemize}
+
+% ------------------------------------------------------------
+% LANGUAGES & INTERESTS
+% ------------------------------------------------------------
+\section{Additional Information}
+
+\accentbar
+
+\begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
+    \textbf{Languages} & \textbf{Interests} \\[0.3cm]
+    English (Professional Proficiency) & AI/ML \& LLM Integration \\
+    Urdu (Native) & Open Source Contributions \\
+    & Competitive Programming \\
+    & Technical Writing
+\end{tabular}
+
+% ------------------------------------------------------------
+% FOOTER
+% ------------------------------------------------------------
+\vspace{1cm}
+\begin{center}
+    \small \textcolor{gray}{References available upon request • \href{mailto:naumannavad378@gmail.com}{naumannavad378@gmail.com}}
+\end{center}
+
+\end{document}

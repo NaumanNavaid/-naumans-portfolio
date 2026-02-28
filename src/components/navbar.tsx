@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MenuIcon, XIcon, MailIcon } from 'lucide-react';
+import ThemeToggle from './theme-toggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -20,80 +21,78 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Expertise', href: '/#services' },
-    { name: 'Process', href: '/#process' },
     { name: 'Work', href: '/#work' },
     { name: 'About', href: '/about' },
     { name: 'Case Studies', href: '/projects' },
     { name: 'CV', href: '/cv' },
   ];
 
-  // Check if link is active
   const isActive = (href: string) => {
     if (href.startsWith('#')) return false;
     return pathname === href;
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/80 backdrop-blur-md border-b border-gray-200 py-3'
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="px-4 sm:px-6 lg:px-8 xl:px-16">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 lg:p-6 pointer-events-none">
+      <nav
+        className={`w-full max-w-6xl pointer-events-auto transition-all duration-500 ease-in-out ${
+          scrolled
+            ? 'glass rounded-full px-6 py-3 shadow-spatial-md'
+            : 'bg-transparent py-4 px-2'
+        }`}
+      >
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
-            className="text-xl font-bold text-gray-900 tracking-tight hover:opacity-80 transition-opacity"
+            className="group flex items-center gap-2"
           >
-            Nauman
-            <span className="text-blue-600">.</span>
+            <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-bold text-sm transition-transform group-hover:rotate-12 shadow-lg shadow-accent/20">
+              N
+            </div>
+            <span className="text-sm font-bold tracking-tighter uppercase hidden sm:block">
+              Nauman Navaid
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors relative ${
+                className={`px-4 py-2 text-[13px] font-medium transition-all rounded-full ${
                   isActive(link.href)
-                    ? 'text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'bg-accent/10 text-accent'
+                    : 'text-muted hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
                 {link.name}
-                {isActive(link.href) && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 rounded-full" />
-                )}
               </a>
             ))}
           </div>
 
-          {/* Right Section - CTA Button */}
-          <div className="hidden lg:flex">
+          {/* Right Section */}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Link
               href="/contact"
-              className="bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+              className="hidden sm:flex items-center gap-2 btn-minimal-primary !py-2 !px-4"
             >
-              <MailIcon className="w-4 h-4" />
-              Let's Talk
+              <MailIcon className="w-3.5 h-3.5" />
+              <span className="text-[13px]">Contact</span>
             </Link>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center gap-3">
+            {/* Mobile Menu Button */}
             <button
-              className="p-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors"
+              className="md:hidden p-2 rounded-full text-foreground hover:bg-foreground/5 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <XIcon className="w-6 h-6" />
+                <XIcon className="w-5 h-5" />
               ) : (
-                <MenuIcon className="w-6 h-6" />
+                <MenuIcon className="w-5 h-5" />
               )}
             </button>
           </div>
@@ -101,35 +100,34 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-4 p-4 bg-white border border-gray-200 rounded-xl shadow-lg">
-            <div className="space-y-4">
+          <div className="md:hidden mt-4 glass rounded-3xl p-6 shadow-spatial-lg animate-in fade-in slide-in-from-top-4 duration-300">
+            <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block py-2 font-medium ${
-                    isActive(link.href)
-                      ? 'text-blue-600'
-                      : 'text-gray-600 hover:text-gray-900'
+                  className={`text-lg font-bold tracking-tight ${
+                    isActive(link.href) ? 'text-blue-600' : 'text-foreground'
                   }`}
                 >
                   {link.name}
                 </a>
               ))}
+              <div className="h-px bg-foreground/5 my-2" />
               <Link
                 href="/contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="bg-blue-600 text-white w-full py-2.5 rounded-lg text-sm font-medium text-center flex items-center justify-center gap-2"
+                className="btn-minimal-primary w-full text-center flex items-center justify-center gap-2"
               >
                 <MailIcon className="w-4 h-4" />
-                Start a Project
+                Let's Talk
               </Link>
             </div>
           </div>
         )}
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };
 

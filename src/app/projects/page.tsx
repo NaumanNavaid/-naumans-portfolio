@@ -20,143 +20,87 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main>
+    <main className="pb-32">
       {/* Header */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full mb-6">
-            <FolderIcon className="w-4 h-4 text-accent" />
-            <span className="text-sm font-semibold text-accent tracking-wide">CASE STUDIES</span>
+      <section className="pt-48 pb-24 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
+        <div className="max-w-4xl">
+          <div className="inline-flex items-center gap-2 mb-8">
+            <span className="text-mono">PORTFOLIO</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Products I've Built
+          <h1 className="text-display-md lg:text-display-lg font-extrabold mb-12 tracking-tightest leading-[0.9]">
+            Case <span className="text-accent">Studies</span>
           </h1>
 
-          <p className="text-xl text-muted leading-relaxed">
-            Real solutions for real business challenges. Each case study represents a complete product journey—from problem discovery through design, development, and deployment.
+          <p className="text-2xl text-muted leading-relaxed max-w-2xl">
+            A selection of products where engineering meets purpose. Each project is a journey from <span className="text-foreground">discovery</span> to <span className="text-foreground">deployment</span>.
           </p>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+      <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12">
           {projects.map((project, idx) => (
             <article
               key={project.title}
               className="group"
             >
-              {/* Project Card */}
-              <div className="card-premium p-0 overflow-hidden h-full flex flex-col">
-                {/* Image */}
-                <div className="relative h-56 overflow-hidden bg-card-alt">
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60 z-10" />
-                  <div className="absolute top-4 right-4 z-20">
-                    <span className="badge badge-success">Deployed</span>
-                  </div>
+              <div className="glass rounded-[48px] p-6 h-full flex flex-col transition-all duration-700 hover:shadow-spatial-lg">
+                <div className="aspect-[16/10] rounded-[36px] overflow-hidden mb-10 relative">
                   <Image
                     src={project.image}
-                    alt={`Screenshot of ${project.title}`}
+                    alt={project.title}
                     width={600}
                     height={400}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                     unoptimized
                   />
+                  <div className="absolute top-6 right-6">
+                    <span className="text-[10px] text-mono bg-accent text-white px-4 py-1.5 rounded-full uppercase font-bold tracking-widest shadow-lg shadow-accent/20">Deployed</span>
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6 lg:p-8 flex-1 flex flex-col">
-                  {/* Title & Link */}
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl lg:text-2xl font-bold text-foreground group-hover:text-accent transition-colors">
+                <div className="px-4 pb-4 flex-1 flex flex-col">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-3xl font-bold tracking-tighter">
                       {project.title}
                     </h3>
-                    <ExternalLinkIcon className="w-5 h-5 text-muted opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="flex gap-2">
+                       {project.link && (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full hover:bg-foreground/5 transition-colors">
+                          <Code2Icon className="w-5 h-5 opacity-40 hover:opacity-100" />
+                        </a>
+                      )}
+                      <a href={project.deploymentLink} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full hover:bg-foreground/5 transition-colors">
+                        <ExternalLinkIcon className="w-5 h-5 opacity-40 hover:opacity-100" />
+                      </a>
+                    </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-muted mb-6 leading-relaxed flex-1">
+                  <p className="text-muted text-lg mb-10 leading-relaxed flex-1">
                     {project.description}
                   </p>
 
-                  {/* Challenge/Solution/Outcome */}
-                  <div className="space-y-4 mb-6">
-                    {project.challenge && (
-                      <div className="flex gap-3">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                          <BarChartIcon className="w-4 h-4 text-amber-500" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-semibold text-muted mb-1">CHALLENGE</p>
-                          <p className="text-sm text-foreground">{project.challenge}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="flex gap-3">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                        <CheckIcon className="w-4 h-4 text-blue-500" />
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-muted mb-1">SOLUTION</p>
-                        <p className="text-sm text-foreground">
-                          Full-stack implementation with modern architecture and best practices.
-                        </p>
-                      </div>
-                    </div>
-
-                    {project.outcome && (
-                      <div className="flex gap-3">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-success/10 flex items-center justify-center">
-                          <CheckIcon className="w-4 h-4 text-success" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-semibold text-muted mb-1">OUTCOME</p>
-                          <p className="text-sm text-foreground">{project.outcome}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Tech Stack */}
-                  <div className="mb-6">
-                    <p className="text-xs font-semibold text-muted mb-3">TECHNOLOGY</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs bg-background px-3 py-1.5 rounded-lg text-muted border border-border"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="flex gap-3 pt-4 border-t border-border">
-                    <a
-                      href={project.deploymentLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary flex-1 text-center justify-center"
-                    >
-                      View Live Site
-                      <ExternalLinkIcon className="w-4 h-4" />
-                    </a>
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-secondary"
-                        aria-label="View source code"
+                  <div className="flex flex-wrap gap-2 mb-10">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] text-mono bg-foreground/5 px-3 py-1 rounded-full"
                       >
-                        <Code2Icon className="w-5 h-5" />
-                      </a>
-                    )}
+                        {tag}
+                      </span>
+                    ))}
                   </div>
+
+                  <a
+                    href={project.deploymentLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-minimal-primary w-full text-center py-4 text-lg"
+                  >
+                    Explore Project
+                  </a>
                 </div>
               </div>
             </article>
@@ -165,32 +109,20 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-4xl mx-auto">
-        <div className="card-elevated bg-card text-center">
-          <div className="inline-flex p-4 rounded-2xl bg-accent/10 mb-6">
-            <CalendarIcon className="w-8 h-8 text-accent" />
-          </div>
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Have a Project in Mind?
-          </h2>
-          <p className="text-lg text-muted mb-8 max-w-xl mx-auto">
-            Let's discuss how I can help bring your vision to life. From AI-powered features to complete SaaS platforms, I have the expertise to deliver.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="btn-premium"
-            >
-              Start Your Project
-              <ArrowRightIcon className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/"
-              className="btn-secondary"
-            >
-              <ArrowRightIcon className="w-5 h-5 rotate-180" />
-              Back to Home
-            </Link>
+      <section className="pt-48 pb-24 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-5xl mx-auto">
+        <div className="glass rounded-[60px] p-12 md:p-24 text-center shadow-spatial-lg relative overflow-hidden border-accent/10">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-display-sm font-bold tracking-tightest leading-[1.1] mb-8">
+              Ready to build your next <span className="text-accent">success story?</span>
+            </h2>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <Link href="/contact" className="btn-minimal-primary px-10 py-4">
+                Start a Project
+              </Link>
+              <Link href="/" className="btn-minimal px-10 py-4">
+                Back to Home
+              </Link>
+            </div>
           </div>
         </div>
       </section>

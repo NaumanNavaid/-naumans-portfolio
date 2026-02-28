@@ -1,0 +1,162 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                        SYED NAUMAN NAVAID                                      ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+Phone:     +92 309 1273446
+Email:     naumannavad378@gmail.com
+Portfolio: https://naumans-portfolio-kappa.vercel.app/
+Location:  Karachi, Pakistan
+
+═════════════════════════════════════════════════════════════════════════════════
+
+PROFESSIONAL SUMMARY
+─────────────────────────────────────────────────────────────────────────────
+
+Full-stack developer specializing in modern web applications with AI-assisted
+workflows. Experienced in building responsive websites, dashboards, and AI-
+integrated applications using Next.js, React, TypeScript, and FastAPI. Proficient
+in leveraging AI tools for rapid prototyping, debugging, and prompt engineering.
+Seeking internship or junior developer role to contribute technical skills and
+grow in a professional environment.
+
+═════════════════════════════════════════════════════════════════════════════════
+
+TECHNICAL SKILLS
+─────────────────────────────────────────────────────────────────────────────
+
+Frontend
+  - Next.js (App Router, Server Components)
+  - React (Hooks, Context, State Management)
+  - TypeScript (Interfaces, Generics, Type Safety)
+  - JavaScript (ES6+, Async/Await, DOM Manipulation)
+  - Tailwind CSS (Responsive Design, Custom Config)
+  - HTML5 & CSS3 (Semantic Markup, Animations)
+
+Backend & APIs
+  - Node.js & Express.js
+  - FastAPI & Python
+  - REST API Development
+  - Authentication & Authorization
+  - CRUD Operations & Data Validation
+
+Databases & CMS
+  - PostgreSQL (Complex Queries, Indexing)
+  - MongoDB (Aggregation, Document Design)
+  - Supabase (Auth, Storage, Real-time)
+  - Sanity CMS (Content Modeling, GROQ Queries)
+
+AI & Workflow
+  - AI-Assisted Development (Claude, ChatGPT)
+  - Prompt Engineering for Code Generation
+  - RAG (Retrieval-Augmented Generation) Systems
+  - Vector Databases (Qdrant)
+  - LLM Integration (OpenAI API)
+
+Tools & Deployment
+  - Git & GitHub (Version Control, Collaboration)
+  - Vercel (Deployment, CI/CD)
+  - Postman (API Testing)
+  - Docker (Basic Containerization)
+
+═════════════════════════════════════════════════════════════════════════════════
+
+PROJECTS
+─────────────────────────────────────────────────────────────────────────────
+
+CV Crafter
+  Tech: Next.js, TypeScript, Tailwind CSS, FastAPI
+  - Built full-stack platform where users can get custom-made resumes from
+    professionals
+  - Implemented interactive form system with real-time CV preview and modular
+    component architecture
+  - Designed responsive UI with focus on UX and cross-device compatibility
+
+AI-Powered Book Chatbot (RAG System)
+  Tech: FastAPI, Python, Qdrant, Vector DB, OpenAI API
+  - Developed Retrieval-Augmented Generation chatbot for querying book content
+    with context-aware responses
+  - Implemented document embeddings pipeline and vector similarity search using
+    Qdrant database
+  - Built scalable REST API endpoints with proper error handling and validation
+
+Inventory Management Portal
+  Tech: Next.js, TypeScript, FastAPI, PostgreSQL, Supabase
+  - Developed full-stack web application with authentication, real-time stock
+    tracking, and reporting features
+  - Implemented comprehensive CRUD operations for products, stock levels, and
+    supplier records with full data validation
+  - Built responsive dashboard UI with real-time updates and exportable reports
+
+Art Gallery Platform with CMS
+  Tech: Next.js, TypeScript, Tailwind CSS, Sanity CMS, PostgreSQL
+  - Designed and implemented dynamic gallery platform with custom admin CMS for
+    managing artwork and artist metadata
+  - Developed category system, filtering, and search functionality
+  - Optimized image handling for high-quality artwork display with lazy loading
+
+AI-Powered To-Do Application
+  Tech: Next.js, TypeScript, FastAPI, LLM API, Supabase
+  - Built smart task management app with AI-generated task suggestions and
+    intelligent breakdowns
+  - Implemented user authentication and persistent task storage with real-time
+    sync across devices
+  - Created clean dashboard UI with category organization and progress tracking
+
+Construction Company Website
+  Tech: Next.js, TypeScript, Tailwind CSS, SEO
+  - Built professional corporate website with SEO optimization and reusable
+    layout components
+  - Implemented dynamic routing for services, projects, and contact pages
+  - Optimized performance and Lighthouse scores for production deployment
+
+Snakes and Ladders Game
+  Tech: React, JavaScript, CSS3
+  - Developed interactive browser-based game with dice mechanics and comprehensive
+    state management
+  - Implemented win-condition validation, smooth animations, and fair dice logic
+  - Built multiplayer support structure with persistent game state
+
+Responsive Landing Page
+  Tech: Next.js, Tailwind CSS, SEO, Accessibility
+  - Developed high-conversion landing page with modular component architecture
+  - Optimized for SEO, accessibility (WCAG compliance), and cross-device compatibility
+  - Achieved strong Core Web Vitals scores with optimized assets and lazy loading
+
+═════════════════════════════════════════════════════════════════════════════════
+
+EXPERIENCE
+─────────────────────────────────────────────────────────────────────────────
+
+Freelance Web Developer
+  Karachi, Pakistan | 2023 - Present
+  - Deliver responsive web applications and dashboards for small businesses
+  - Convert Figma designs into production-ready code
+  - Build AI-integrated applications and content management platforms
+  - Manage full-stack development from backend APIs to frontend UI/UX
+
+═════════════════════════════════════════════════════════════════════════════════
+
+EDUCATION
+─────────────────────────────────────────────────────────────────────────────
+
+A-Levels
+  Karachi, Pakistan
+  Subjects: Accounting, Mathematics, Urdu
+
+═════════════════════════════════════════════════════════════════════════════════
+
+LANGUAGES
+─────────────────────────────────────────────────────────────────────────────
+  - English (Professional Proficiency)
+  - Urdu (Native)
+
+═════════════════════════════════════════════════════════════════════════════════
+
+INTERESTS
+─────────────────────────────────────────────────────────────────────────────
+  - AI/ML and LLM Integration
+  - Open Source Contributions
+  - Competitive Programming
+  - Technical Writing
+
+═════════════════════════════════════════════════════════════════════════════════

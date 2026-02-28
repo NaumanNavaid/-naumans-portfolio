@@ -12,7 +12,8 @@ import {
   ClockIcon,
   UserIcon,
   FolderIcon,
-  ArrowLeftIcon
+  ArrowLeftIcon,
+  Linkedin
 } from 'lucide-react';
 import projects from '@/data/projects';
 
@@ -35,51 +36,51 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
   if (!project) return notFound();
 
   return (
-    <main>
+    <main className="pb-32">
       {/* Header */}
-      <section className="pt-32 pb-8 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
+      <section className="pt-48 pb-16 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-muted hover:text-accent transition-colors mb-6"
+          className="text-mono border-b border-foreground/20 hover:border-foreground transition-colors pb-1 mb-12 inline-block"
         >
-          <ArrowLeftIcon className="w-4 h-4" />
-          Back to Case Studies
+          &larr; Back to Case Studies
         </Link>
 
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full mb-6">
-          <FolderIcon className="w-4 h-4 text-accent" />
-          <span className="text-sm font-semibold text-accent tracking-wide">CASE STUDY</span>
-        </div>
+        <div className="max-w-4xl mt-12">
+          <div className="inline-flex items-center gap-2 mb-8">
+            <span className="text-mono">CASE STUDY</span>
+          </div>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-          {project.title}
-        </h1>
+          <h1 className="text-display-md lg:text-display-lg font-extrabold mb-12 tracking-tightest leading-[0.9]">
+            {project.title}
+          </h1>
 
-        <p className="text-xl text-muted max-w-3xl">
-          {project.description}
-        </p>
+          <p className="text-2xl text-muted leading-relaxed max-w-2xl">
+            {project.description}
+          </p>
 
-        <div className="flex flex-wrap gap-3 mt-6">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="badge badge-accent"
-            >
-              {tag}
-            </span>
-          ))}
+          <div className="flex flex-wrap gap-2 mt-12">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-[10px] text-mono bg-accent/10 text-accent px-3 py-1 rounded-full font-bold border border-accent/10"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Hero Image */}
-      <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto pb-16">
-        <div className="relative rounded-2xl overflow-hidden border border-border">
+      <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto pb-24">
+        <div className="relative rounded-[48px] overflow-hidden glass p-4 shadow-spatial-lg border-accent/10">
           <Image
             src={project.image}
             alt={project.title}
             width={1200}
             height={600}
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover rounded-[36px] transition-all duration-1000"
             unoptimized
           />
         </div>
@@ -87,198 +88,129 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
 
       {/* Case Study Content */}
       <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto pb-16">
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-3 gap-16">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-12">
             {/* Challenge */}
-            <div className="card-premium">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 rounded-xl bg-amber-500/10">
-                  <BarChartIcon className="w-6 h-6 text-amber-500" />
+            <div className="glass rounded-[40px] p-10">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center text-foreground/40">
+                  <BarChartIcon className="w-6 h-6" />
                 </div>
-                <h2 className="text-2xl font-bold text-foreground">The Challenge</h2>
+                <h2 className="text-3xl font-bold tracking-tighter">The Challenge</h2>
               </div>
-              <p className="text-muted leading-relaxed">
-                {project.challenge || "Building a scalable solution that addresses complex business requirements while maintaining excellent user experience and performance."}
+              <p className="text-xl text-muted leading-relaxed">
+                {project.challenge || "Engineering a solution that balances technical complexity with intuitive user experience, ensuring high performance and business utility."}
               </p>
             </div>
 
             {/* Solution */}
-            <div className="card-premium">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 rounded-xl bg-blue-500/10">
-                  <CheckIcon className="w-6 h-6 text-blue-500" />
+            <div className="glass rounded-[40px] p-10">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center text-foreground/40">
+                  <CheckIcon className="w-6 h-6" />
                 </div>
-                <h2 className="text-2xl font-bold text-foreground">The Solution</h2>
+                <h2 className="text-3xl font-bold tracking-tighter">The Solution</h2>
               </div>
-              <p className="text-muted leading-relaxed mb-4">
-                I implemented a comprehensive solution using modern technologies and best practices.
-                The approach focused on scalability, performance, and user experience while ensuring
-                maintainable code and seamless integration.
+              <p className="text-muted text-lg leading-relaxed mb-10">
+                A modular full-stack architecture built for speed and scalability. By leveraging Next.js for the frontend and FastAPI for the core logic, I delivered a product that is both robust and flexible.
               </p>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="flex gap-2">
-                  <CheckIcon className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">Full-stack architecture</span>
-                </div>
-                <div className="flex gap-2">
-                  <CheckIcon className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">Modern tech stack</span>
-                </div>
-                <div className="flex gap-2">
-                  <CheckIcon className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">Responsive design</span>
-                </div>
-                <div className="flex gap-2">
-                  <CheckIcon className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">Production-ready code</span>
-                </div>
+              <div className="grid sm:grid-cols-2 gap-6 pt-8 border-t border-foreground/5">
+                {[
+                  "Atomic component design",
+                  "FastAPI high-performance core",
+                  "TypeScript end-to-end safety",
+                  "Cloud-native deployment"
+                ].map(item => (
+                  <div key={item} className="flex gap-3 text-mono text-[11px]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* Outcome */}
             {project.outcome && (
-              <div className="card-premium">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-xl bg-success/10">
-                    <CheckIcon className="w-6 h-6 text-success" />
+              <div className="glass rounded-[40px] p-10 border-blue-500/10 border">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500">
+                    <CheckIcon className="w-6 h-6" />
                   </div>
-                  <h2 className="text-2xl font-bold text-foreground">The Outcome</h2>
+                  <h2 className="text-3xl font-bold tracking-tighter">The Outcome</h2>
                 </div>
-                <p className="text-muted leading-relaxed">
+                <p className="text-xl text-foreground font-medium leading-relaxed">
                   {project.outcome}
                 </p>
               </div>
             )}
-
-            {/* Technical Details */}
-            <div className="card-premium">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 rounded-xl bg-accent/10">
-                  <Code2Icon className="w-6 h-6 text-accent" />
-                </div>
-                <h2 className="text-2xl font-bold text-foreground">Technical Details</h2>
-              </div>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Technologies Used</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1.5 text-sm bg-background border border-border rounded-lg text-muted"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
-                  <div>
-                    <p className="text-sm text-muted">Project Type</p>
-                    <p className="font-medium text-foreground">Web Application</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted">Role</p>
-                    <p className="font-medium text-foreground">Full-Stack Developer</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Project Info Card */}
-            <div className="card-premium sticky top-24">
-              <h3 className="font-bold text-foreground mb-4">Project Actions</h3>
+            <div className="glass rounded-[40px] p-8 sticky top-32 shadow-spatial-md">
+              <h3 className="text-mono mb-8">Project Hub</h3>
               <div className="space-y-3">
                 <a
                   href={project.deploymentLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary w-full justify-center"
+                  className="btn-minimal-primary w-full text-center py-4 flex items-center justify-center gap-2"
                 >
+                  Live Deployment
                   <ExternalLinkIcon className="w-4 h-4" />
-                  View Live Site
                 </a>
                 {project.link && (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-secondary w-full justify-center"
+                    className="btn-minimal w-full text-center py-4 flex items-center justify-center gap-2"
                   >
-                    <Code2Icon className="w-5 h-5" />
                     View Source
+                    <Code2Icon className="w-4 h-4" />
                   </a>
                 )}
-                <Link
-                  href="/contact"
-                  className="w-full block text-center py-3 bg-background border border-border rounded-xl hover:border-accent transition-colors font-medium"
-                >
-                  Start Similar Project
-                </Link>
+                {project.linkedinLink && (
+                  <a
+                    href={project.linkedinLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-minimal w-full text-center py-4 flex items-center justify-center gap-2 border-[#0077b5]/20 text-[#0077b5]"
+                  >
+                    LinkedIn Story
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                )}
               </div>
 
-              <div className="pt-6 mt-6 border-t border-border">
-                <div className="flex items-center gap-3 mb-4">
-                  <ClockIcon className="w-5 h-5 text-accent" />
+              <div className="pt-8 mt-8 border-t border-foreground/5">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl glass flex items-center justify-center text-foreground/40">
+                    <ClockIcon className="w-5 h-5" />
+                  </div>
                   <div>
-                    <p className="text-xs text-muted">Response Time</p>
-                    <p className="font-medium text-foreground">&lt; 24 hours</p>
+                    <p className="text-[10px] text-mono uppercase tracking-widest opacity-40">Response</p>
+                    <p className="font-bold tracking-tight">&lt; 24 hours</p>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* CTA Card */}
-            <div className="bg-card-alt p-6 rounded-2xl border border-border text-center">
-              <p className="text-sm text-muted mb-4">
-                Need a similar solution for your business?
-              </p>
-              <Link
-                href="/contact"
-                className="btn-primary w-full justify-center"
-              >
-                Let's Talk
-                <ArrowRightIcon className="w-4 h-4" />
-              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Related Projects */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto bg-card-alt -mx-4 sm:-mx-6 lg:-mx-8 xl:-mx-16 px-4 sm:px-6 lg:px-8 xl:px-16">
-        <h2 className="text-2xl font-bold text-foreground mb-8">More Case Studies</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {projects.filter(p => p.title !== project.title).slice(0, 3).map((relatedProject) => (
-            <Link
-              key={relatedProject.title}
-              href={relatedProject.link}
-              className="card-premium p-0 overflow-hidden group"
-            >
-              <div className="aspect-video bg-card-alt overflow-hidden">
-                <Image
-                  src={relatedProject.image}
-                  alt={relatedProject.title}
-                  width={400}
-                  height={225}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  unoptimized
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold text-foreground group-hover:text-accent transition-colors">
-                  {relatedProject.title}
-                </h3>
-                <p className="text-sm text-muted mt-1 line-clamp-2">
-                  {relatedProject.description}
-                </p>
-              </div>
+      {/* CTA Section */}
+      <section className="pt-32 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-5xl mx-auto">
+        <div className="glass rounded-[60px] p-12 md:p-24 text-center shadow-spatial-lg relative overflow-hidden">
+          <h2 className="text-display-sm font-bold tracking-tightest leading-[1.1] mb-12">
+            Ready to scale your next <span className="text-foreground/40">technical venture?</span>
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="btn-minimal-primary px-12 py-5 text-lg">
+              Start Your Project
             </Link>
-          ))}
+          </div>
         </div>
       </section>
     </main>
