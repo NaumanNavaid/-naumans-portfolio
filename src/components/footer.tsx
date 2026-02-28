@@ -52,8 +52,8 @@ const Footer = () => {
               <h3 className="text-mono mb-6">Connect</h3>
               <ul className="space-y-4">
                 {[
-                  { name: "LinkedIn", href: "https://linkedin.com/in/nauman" },
-                  { name: "GitHub", href: "https://github.com/nauman" },
+                  { name: "LinkedIn", href: "https://www.linkedin.com/in/nauman-navaid/" },
+                  { name: "GitHub", href: "https://github.com/NaumanNavaid" },
                   { name: "Email", href: "mailto:naumannavad378@gmail.com" }
                 ].map(l => (
                   <li key={l.name}>

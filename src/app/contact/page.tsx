@@ -1,13 +1,8 @@
-import React from 'react';
 import Link from 'next/link';
 import {
   MailIcon,
   PhoneIcon,
-  MapPinIcon,
-  CheckIcon,
-  ClockIcon,
   SendIcon,
-  ArrowRightIcon,
   Linkedin
 } from 'lucide-react';
 
@@ -34,7 +29,7 @@ export default function ContactPage() {
       icon: <Linkedin className="w-5 h-5" />,
       title: "LinkedIn",
       value: "Connect",
-      href: "https://linkedin.com/in/nauman",
+      href: "https://www.linkedin.com/in/nauman-navaid/",
       external: true
     }
   ];
