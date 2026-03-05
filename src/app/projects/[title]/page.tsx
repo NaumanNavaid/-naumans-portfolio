@@ -3,16 +3,11 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  ArrowRightIcon,
   ExternalLinkIcon,
   Code2Icon,
   CheckIcon,
-  CalendarIcon,
   BarChartIcon,
   ClockIcon,
-  UserIcon,
-  FolderIcon,
-  ArrowLeftIcon,
   Linkedin
 } from 'lucide-react';
 import projects from '@/data/projects';
@@ -41,9 +36,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
       <section className="pt-48 pb-16 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto">
         <Link
           href="/projects"
-          className="text-mono border-b border-foreground/20 hover:border-foreground transition-colors pb-1 mb-12 inline-block"
+          className="text-mono border-b border-foreground/20 hover:border-accent hover:text-accent transition-all duration-300 pb-1 mb-12 inline-block group"
         >
-          &larr; Back to Case Studies
+          &larr; <span className="group-hover:ml-1 transition-all duration-300 inline-block">Back to Case Studies</span>
         </Link>
 
         <div className="max-w-4xl mt-12">
@@ -63,7 +58,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] text-mono bg-accent/10 text-accent px-3 py-1 rounded-full font-bold border border-accent/10"
+                className="text-[10px] text-mono bg-accent/10 text-accent px-3 py-1 rounded-full font-bold border border-accent/10 hover:bg-accent/15 transition-colors"
               >
                 {tag}
               </span>
@@ -74,13 +69,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
 
       {/* Hero Image */}
       <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto pb-24">
-        <div className="relative rounded-[48px] overflow-hidden glass p-4 shadow-spatial-lg border-accent/10">
+        <div className="relative rounded-[48px] overflow-hidden glass p-4 shadow-spatial-lg border-accent/10 transition-all duration-500 hover:shadow-2xl">
           <Image
             src={project.image}
             alt={project.title}
             width={1200}
             height={600}
-            className="w-full h-auto object-cover rounded-[36px] transition-all duration-1000"
+            className="w-full h-auto object-cover rounded-[36px] transition-all duration-1000 hover:scale-[1.02]"
             unoptimized
           />
         </div>
@@ -92,7 +87,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-12">
             {/* Challenge */}
-            <div className="glass rounded-[40px] p-10">
+            <div className="glass rounded-[40px] p-10 transition-all duration-300 hover:shadow-lg">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center text-foreground/40">
                   <BarChartIcon className="w-6 h-6" />
@@ -105,7 +100,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
             </div>
 
             {/* Solution */}
-            <div className="glass rounded-[40px] p-10">
+            <div className="glass rounded-[40px] p-10 transition-all duration-300 hover:shadow-lg">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center text-foreground/40">
                   <CheckIcon className="w-6 h-6" />
@@ -132,7 +127,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
 
             {/* Outcome */}
             {project.outcome && (
-              <div className="glass rounded-[40px] p-10 border-blue-500/10 border">
+              <div className="glass rounded-[40px] p-10 border-blue-500/10 border transition-all duration-300 hover:shadow-lg hover:border-blue-500/20">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500">
                     <CheckIcon className="w-6 h-6" />
@@ -148,27 +143,27 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <div className="glass rounded-[40px] p-8 sticky top-32 shadow-spatial-md">
+            <div className="glass rounded-[40px] p-8 sticky top-32 shadow-spatial-md transition-all duration-300 hover:shadow-lg">
               <h3 className="text-mono mb-8">Project Hub</h3>
               <div className="space-y-3">
                 <a
                   href={project.deploymentLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-minimal-primary w-full text-center py-4 flex items-center justify-center gap-2"
+                  className="btn-minimal-primary w-full text-center py-4 flex items-center justify-center gap-2 group/btn"
                 >
                   Live Deployment
-                  <ExternalLinkIcon className="w-4 h-4" />
+                  <ExternalLinkIcon className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </a>
                 {project.link && (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-minimal w-full text-center py-4 flex items-center justify-center gap-2"
+                    className="btn-minimal w-full text-center py-4 flex items-center justify-center gap-2 group/btn"
                   >
                     View Source
-                    <Code2Icon className="w-4 h-4" />
+                    <Code2Icon className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </a>
                 )}
                 {project.linkedinLink && (
@@ -176,7 +171,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
                     href={project.linkedinLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-minimal w-full text-center py-4 flex items-center justify-center gap-2 border-[#0077b5]/20 text-[#0077b5]"
+                    className="btn-minimal w-full text-center py-4 flex items-center justify-center gap-2 border-[#0077b5]/20 text-[#0077b5] hover:bg-[#0077b5]/5 transition-all"
                   >
                     LinkedIn Story
                     <Linkedin className="w-4 h-4" />
@@ -202,7 +197,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
 
       {/* CTA Section */}
       <section className="pt-32 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-5xl mx-auto">
-        <div className="glass rounded-[60px] p-12 md:p-24 text-center shadow-spatial-lg relative overflow-hidden">
+        <div className="glass rounded-[60px] p-12 md:p-24 text-center shadow-spatial-lg relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
           <h2 className="text-display-sm font-bold tracking-tightest leading-[1.1] mb-12">
             Ready to scale your next <span className="text-foreground/40">technical venture?</span>
           </h2>

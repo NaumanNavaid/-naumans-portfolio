@@ -12,60 +12,44 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    // Initialize theme on client side to prevent SSR mismatch
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme') as Theme | null;
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      return savedTheme || (prefersDark ? 'dark' : 'dark'); // Default to dark
-    }
-    return 'dark';
-  });
+  const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
-  // Set mounted to true after first render (client-side only)
+  // Read from localStorage on mount
   useEffect(() => {
-    setMounted(true);
-
-    // Only load theme from localStorage if not already set
     const savedTheme = localStorage.getItem('theme') as Theme | null;
-    if (savedTheme && savedTheme !== theme) {
+    if (savedTheme === 'light' || savedTheme === 'dark') {
       setTheme(savedTheme);
     }
+    setMounted(true);
   }, []);
 
-  // Apply theme to body and save to localStorage
+  // Apply theme classes when theme or mounted changes
   useEffect(() => {
-    if (mounted && typeof window !== 'undefined') {
-      const body = document.body;
-      const html = document.documentElement;
+    if (!mounted) return;
 
-      // Force cleanup of any existing theme classes first
-      body.classList.remove('dark-mode', 'light-mode');
-      html.classList.remove('dark', 'light');
+    const html = document.documentElement;
+    const body = document.body;
 
-      // Apply new theme classes
-      if (theme === 'dark') {
-        body.classList.add('dark-mode');
-        html.classList.add('dark');
-      } else {
-        // Ensure light mode has proper styling
-        body.classList.add('light-mode');
-        html.classList.add('light');
-      }
+    // Remove all theme classes
+    html.classList.remove('dark', 'light');
+    body.classList.remove('dark-mode', 'light-mode');
 
-      // Force a repaint to ensure styles are applied immediately
-      body.style.display = 'none';
-      body.offsetHeight; // Trigger reflow
-      body.style.display = '';
-
-      localStorage.setItem('theme', theme);
+    // Apply new theme
+    if (theme === 'dark') {
+      html.classList.add('dark');
+      body.classList.add('dark-mode');
+    } else {
+      html.classList.add('light');
+      body.classList.add('light-mode');
     }
+
+    // Save to localStorage
+    localStorage.setItem('theme', theme);
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
   return (

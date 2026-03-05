@@ -21,18 +21,19 @@ export const FeaturedProjects = () => {
           {featured.map((project, idx) => (
             <div
               key={project.title}
-              className="glass rounded-[40px] p-4 group transition-all duration-700 hover:shadow-spatial-lg border-accent/5 hover:border-accent/20"
+              className="glass rounded-[40px] p-4 group transition-all duration-500 hover:shadow-spatial-lg hover:-translate-y-2 border-accent/5 hover:border-accent/20"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
-              <div className="aspect-[16/10] rounded-[30px] overflow-hidden mb-8 relative">
+              <div className="aspect-[16/10] rounded-[30px] overflow-hidden mb-8 relative bg-accent/5">
                 <Image
                   src={project.image}
                   alt={project.title}
                   width={400}
                   height={250}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   unoptimized
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute top-4 left-4">
                   <span className="text-[10px] text-mono bg-accent text-white px-3 py-1 rounded-full uppercase font-bold tracking-widest shadow-lg shadow-accent/20">Featured</span>
                 </div>
@@ -40,8 +41,8 @@ export const FeaturedProjects = () => {
 
               <div className="px-4 pb-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold tracking-tighter group-hover:text-accent transition-colors">{project.title}</h3>
-                  <a href={project.deploymentLink} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-accent/10 hover:text-accent transition-colors">
+                  <h3 className="text-2xl font-bold tracking-tighter group-hover:text-accent transition-colors duration-300">{project.title}</h3>
+                  <a href={project.deploymentLink} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-accent/10 hover:text-accent transition-all duration-300 hover:scale-110">
                     <ExternalLinkIcon className="w-4 h-4" />
                   </a>
                 </div>
@@ -50,7 +51,7 @@ export const FeaturedProjects = () => {
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tags.slice(0, 3).map((tag) => (
-                    <span key={tag} className="text-[10px] text-mono bg-accent/5 text-accent px-2 py-0.5 rounded-full border border-accent/5 font-bold">
+                    <span key={tag} className="text-[10px] text-mono bg-accent/5 text-accent px-2 py-0.5 rounded-full border border-accent/5 font-bold hover:bg-accent/10 transition-colors cursor-default">
                       {tag}
                     </span>
                   ))}
@@ -61,14 +62,15 @@ export const FeaturedProjects = () => {
                     href={project.deploymentLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-minimal-primary flex-1 text-center py-2.5"
+                    className="btn-minimal-primary flex-1 text-center py-2.5 group/btn"
                   >
                     View Project
+                    <ExternalLinkIcon className="w-4 h-4 inline ml-1 group-hover/btn:translate-x-1 transition-transform" />
                   </a>
                   {project.link && (
                     <a
                       href={project.link}
-                      className="btn-minimal p-2.5 flex items-center justify-center"
+                      className="btn-minimal p-2.5 flex items-center justify-center hover:bg-accent/10 hover:text-accent transition-all duration-300 hover:scale-105"
                     >
                       <Code2Icon className="w-4 h-4" />
                     </a>
@@ -82,7 +84,7 @@ export const FeaturedProjects = () => {
         <div className="text-center mt-20">
           <Link
             href="/projects"
-            className="text-mono border-b border-foreground/20 hover:border-foreground transition-colors pb-1"
+            className="text-mono border-b border-foreground/20 hover:border-accent hover:text-accent transition-all duration-300 pb-1 inline-block"
           >
             View All Projects
           </Link>

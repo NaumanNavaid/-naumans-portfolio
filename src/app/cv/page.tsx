@@ -86,15 +86,15 @@ const CVPage = () => {
           <div className="cv-page bg-white text-black p-12 mb-0 print:pb-12 print:shadow-none">
             {/* Header */}
             <div className="border-b-2 border-black pb-8 mb-8">
-              <h1 className="text-5xl font-extrabold mb-2 tracking-tighter">
+              <h1 className="text-5xl font-extrabold mb-2 tracking-tighter text-black">
                 Syed Nauman <span className="text-blue-600">Navaid</span>
               </h1>
               <p className="text-xl font-bold tracking-tight text-gray-500 mb-6">Full-Stack Developer</p>
               <div className="grid grid-cols-2 gap-2 text-[13px] font-medium text-gray-400 uppercase tracking-wider">
-                <span>naumannavad378@gmail.com</span>
-                <span>+92 309 1273446</span>
-                <span>nauman.navaid (LinkedIn)</span>
-                <span>Karachi, Pakistan</span>
+                <span className="text-black">naumannavad378@gmail.com</span>
+                <span className="text-black">+92 309 1273446</span>
+                <span className="text-black">nauman.navaid (LinkedIn)</span>
+                <span className="text-black">Karachi, Pakistan</span>
               </div>
             </div>
 
@@ -117,7 +117,7 @@ const CVPage = () => {
               </h2>
               <div className="text-sm">
                 <div className="flex justify-between mb-2">
-                  <span className="font-bold text-lg tracking-tight">Freelance Web Developer</span>
+                  <span className="font-bold text-lg tracking-tight text-black">Freelance Web Developer</span>
                   <span className="text-gray-400 font-mono text-xs">2023 - PRESENT</span>
                 </div>
                 <ul className="space-y-2 text-black font-medium opacity-70">
@@ -158,7 +158,7 @@ const CVPage = () => {
                 {projects.map((project, idx) => (
                   <div key={idx} className="text-sm">
                     <div className="flex justify-between items-baseline mb-2">
-                      <span className="font-bold text-base tracking-tight">{project.title}</span>
+                      <span className="font-bold text-base tracking-tight text-black">{project.title}</span>
                       <span className="text-[10px] font-mono text-gray-400 uppercase">{project.tech}</span>
                     </div>
                     <p className="text-black opacity-60 mb-3 font-medium">{project.description}</p>
@@ -176,12 +176,12 @@ const CVPage = () => {
             <div className="pt-8 border-t border-gray-100 flex justify-between items-center">
               <div>
                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-2">Education</h3>
-                <p className="text-sm font-bold tracking-tight">A-Levels</p>
+                <p className="text-sm font-bold tracking-tight text-black">A-Levels</p>
                 <p className="text-xs text-gray-500">Accounting, Mathematics, Urdu</p>
               </div>
               <div className="text-right">
                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-2">Status</h3>
-                <p className="text-sm font-bold tracking-tight">Open to Work</p>
+                <p className="text-sm font-bold tracking-tight text-black">Open to Work</p>
                 <p className="text-xs text-blue-600 font-mono">Internships / Junior Roles</p>
               </div>
             </div>

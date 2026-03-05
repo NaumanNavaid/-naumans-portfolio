@@ -1,15 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
-  ArrowRightIcon,
   ExternalLinkIcon,
-  Code2Icon,
-  CheckIcon,
-  CalendarIcon,
-  BarChartIcon,
-  ClockIcon,
-  UserIcon,
-  FolderIcon
+  Code2Icon
 } from 'lucide-react';
 import projects from '@/data/projects';
 
@@ -46,16 +39,17 @@ export default function ProjectsPage() {
               key={project.title}
               className="group"
             >
-              <div className="glass rounded-[48px] p-6 h-full flex flex-col transition-all duration-700 hover:shadow-spatial-lg">
-                <div className="aspect-[16/10] rounded-[36px] overflow-hidden mb-10 relative">
+              <div className="glass rounded-[48px] p-6 h-full flex flex-col transition-all duration-500 hover:shadow-spatial-lg hover:-translate-y-1">
+                <div className="aspect-[16/10] rounded-[36px] overflow-hidden mb-10 relative bg-accent/5">
                   <Image
                     src={project.image}
                     alt={project.title}
                     width={600}
                     height={400}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                     unoptimized
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute top-6 right-6">
                     <span className="text-[10px] text-mono bg-accent text-white px-4 py-1.5 rounded-full uppercase font-bold tracking-widest shadow-lg shadow-accent/20">Deployed</span>
                   </div>
@@ -63,17 +57,17 @@ export default function ProjectsPage() {
 
                 <div className="px-4 pb-4 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-3xl font-bold tracking-tighter">
+                    <h3 className="text-3xl font-bold tracking-tighter group-hover:text-accent transition-colors duration-300">
                       {project.title}
                     </h3>
                     <div className="flex gap-2">
                        {project.link && (
-                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full hover:bg-foreground/5 transition-colors">
-                          <Code2Icon className="w-5 h-5 opacity-40 hover:opacity-100" />
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full hover:bg-foreground/5 hover:text-accent transition-all duration-300 hover:scale-110">
+                          <Code2Icon className="w-5 h-5 opacity-40 group-hover:opacity-100" />
                         </a>
                       )}
-                      <a href={project.deploymentLink} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full hover:bg-foreground/5 transition-colors">
-                        <ExternalLinkIcon className="w-5 h-5 opacity-40 hover:opacity-100" />
+                      <a href={project.deploymentLink} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full hover:bg-foreground/5 hover:text-accent transition-all duration-300 hover:scale-110">
+                        <ExternalLinkIcon className="w-5 h-5 opacity-40 group-hover:opacity-100" />
                       </a>
                     </div>
                   </div>
@@ -86,7 +80,7 @@ export default function ProjectsPage() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] text-mono bg-foreground/5 px-3 py-1 rounded-full"
+                        className="text-[10px] text-mono bg-foreground/5 px-3 py-1 rounded-full hover:bg-accent/10 hover:text-accent transition-colors cursor-default"
                       >
                         {tag}
                       </span>
@@ -97,9 +91,10 @@ export default function ProjectsPage() {
                     href={project.deploymentLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-minimal-primary w-full text-center py-4 text-lg"
+                    className="btn-minimal-primary w-full text-center py-4 text-lg group/btn"
                   >
                     Explore Project
+                    <ExternalLinkIcon className="w-5 h-5 inline ml-2 group-hover/btn:translate-x-2 transition-transform" />
                   </a>
                 </div>
               </div>
@@ -110,14 +105,15 @@ export default function ProjectsPage() {
 
       {/* CTA Section */}
       <section className="pt-48 pb-24 px-4 sm:px-6 lg:px-8 xl:px-16 max-w-5xl mx-auto">
-        <div className="glass rounded-[60px] p-12 md:p-24 text-center shadow-spatial-lg relative overflow-hidden border-accent/10">
+        <div className="glass rounded-[60px] p-12 md:p-24 text-center shadow-spatial-lg relative overflow-hidden border-accent/10 hover:border-accent/20 transition-colors duration-500">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-display-sm font-bold tracking-tightest leading-[1.1] mb-8">
               Ready to build your next <span className="text-accent">success story?</span>
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/contact" className="btn-minimal-primary px-10 py-4">
+              <Link href="/contact" className="btn-minimal-primary px-10 py-4 group/btn">
                 Start a Project
+                <ExternalLinkIcon className="w-5 h-5 inline ml-2 group-hover/btn:translate-x-1 transition-transform" />
               </Link>
               <Link href="/" className="btn-minimal px-10 py-4">
                 Back to Home

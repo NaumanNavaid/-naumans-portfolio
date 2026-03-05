@@ -36,7 +36,7 @@ export const Hero = () => {
           {/* Left Content */}
           <div className="space-y-12">
             <div className="fade-in-up">
-              <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
+              <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-accent/10 rounded-full border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:bg-accent/15">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
@@ -52,8 +52,8 @@ export const Hero = () => {
               </h1>
 
               <p className="text-xl md:text-2xl text-muted leading-relaxed max-w-xl">
-                I build digital products where <span className="text-foreground font-medium">high-performance code</span> meets 
-                <span className="text-foreground font-medium"> minimalist design</span>. 
+                I build digital products where <span className="text-foreground font-medium">high-performance code</span> meets
+                <span className="text-foreground font-medium"> minimalist design</span>.
               </p>
             </div>
 
@@ -61,10 +61,10 @@ export const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 fade-in-up" style={{ animationDelay: '0.1s' }}>
               <Link
                 href="/contact"
-                className="btn-minimal-primary flex items-center justify-center gap-2 px-8 py-4"
+                className="btn-minimal-primary flex items-center justify-center gap-2 px-8 py-4 group"
               >
                 Let's Talk
-                <ArrowRightIcon className="w-4 h-4" />
+                <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/projects"
@@ -102,15 +102,14 @@ export const Hero = () => {
             <div className="relative group">
               {/* Outer Glow */}
               <div className="absolute -inset-10 bg-accent/20 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              
-              <div className="relative glass rounded-[40px] p-6 shadow-spatial-lg overflow-hidden border-accent/10">
+
+              <div className="relative glass rounded-[40px] p-6 shadow-spatial-lg overflow-hidden border-accent/10 transition-all duration-700 hover:shadow-2xl hover:border-accent/20">
                 <div className="aspect-[4/5] rounded-[30px] overflow-hidden bg-accent/5 relative">
                   <img
                     src="/nauman.jpg"
                     alt="Syed Nauman Navaid"
                     className="w-full h-full object-cover object-top transition-all duration-700 scale-105 group-hover:scale-100"
                   />
-                  {/* Removed dark overlay */}
                   <div className="absolute bottom-6 left-6">
                     <div className="text-mono text-white/80 mb-1">Status</div>
                     <div className="text-sm font-bold text-white tracking-tight bg-accent/80 backdrop-blur-md px-3 py-1 rounded-full">Shipping Quality</div>
@@ -123,7 +122,7 @@ export const Hero = () => {
                       <h3 className="text-2xl font-bold tracking-tighter">Syed Nauman</h3>
                       <p className="text-mono text-accent">Full-Stack Developer</p>
                     </div>
-                    <div className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-accent">
+                    <div className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-accent hover:bg-accent/20 transition-colors cursor-pointer">
                       <BotIcon className="w-6 h-6" />
                     </div>
                   </div>
@@ -140,7 +139,7 @@ export const Hero = () => {
                     <div className="w-full h-px bg-foreground/5" />
                     <div className="flex flex-wrap gap-2 pt-1">
                       {['React', 'Next.js', 'FastAPI'].map(t => (
-                        <span key={t} className="text-[10px] text-mono bg-accent/10 text-accent px-2 py-0.5 rounded-full border border-accent/10 font-bold">{t}</span>
+                        <span key={t} className="text-[10px] text-mono bg-accent/10 text-accent px-2 py-0.5 rounded-full border border-accent/10 font-bold hover:bg-accent/20 transition-colors cursor-default">{t}</span>
                       ))}
                     </div>
                   </div>

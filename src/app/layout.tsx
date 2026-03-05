@@ -26,10 +26,51 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-blue-500/30`}
+        suppressHydrationWarning
       >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme');
+                  const isDark = theme !== 'light';
+
+                  // Apply theme immediately to prevent flash
+                  document.documentElement.style.backgroundColor = isDark ? '#020617' : '#F8FAFC';
+                  document.documentElement.style.color = isDark ? '#F8FAFC' : '#0F172A';
+
+                  // Then set up the classes
+                  const root = document.documentElement;
+                  const body = document.body;
+
+                  root.classList.remove('light', 'dark');
+                  body.classList.remove('light-mode', 'dark-mode');
+
+                  if (isDark) {
+                    root.classList.add('dark');
+                    body.classList.add('dark-mode');
+                  } else {
+                    root.classList.add('light');
+                    body.classList.add('light-mode');
+                  }
+
+                  // Remove inline styles after a brief delay to allow CSS to take over
+                  setTimeout(() => {
+                    document.documentElement.style.backgroundColor = '';
+                    document.documentElement.style.color = '';
+                  }, 50);
+                } catch (e) {
+                  console.error('Theme init error:', e);
+                }
+              })();
+            `,
+          }}
+        />
         <ThemeProvider>
           <div className="noise" />
           <div className="mesh-gradient" />

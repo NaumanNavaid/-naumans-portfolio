@@ -142,7 +142,7 @@
   height: 100%;
   z-index: -1;
   background-color: var(--background);
-  background-image: 
+  background-image:
     radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0, transparent 50%),
     radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0, transparent 50%),
     radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.15) 0, transparent 50%),
@@ -151,7 +151,7 @@
 }
 
 .dark-mode .mesh-gradient {
-  background-image: 
+  background-image:
     radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.25) 0, transparent 40%),
     radial-gradient(at 80% 0%, rgba(168, 85, 247, 0.2) 0, transparent 40%),
     radial-gradient(at 100% 90%, rgba(99, 102, 241, 0.25) 0, transparent 40%),
@@ -182,13 +182,79 @@
   background-color: var(--selection);
 }
 
+/* Fade-in animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
 /* CV Layout (Print) */
 @media print {
-  .noise, .mesh-gradient, nav, footer {
+  /* Hide UI elements */
+  nav,
+  footer,
+  .noise,
+  .mesh-gradient,
+  .no-print {
     display: none !important;
   }
-  body {
+
+  /* Remove all margins and padding */
+  html,
+  body,
+  main,
+  main > div {
     background: white !important;
     color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* CV pages - remove shadows, padding, margins */
+  .cv-page,
+  .shadow-spatial-lg,
+  .shadow-spatial-md {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 1cm !important;
+    margin: 0 !important;
+    page-break-after: always;
+    width: 100% !important;
+  }
+
+  /* Force all text to black */
+  .cv-page, .cv-page * {
+    color: black !important;
+  }
+
+  /* Keep blue accent */
+  .cv-page .text-blue-600 {
+    color: #2563eb !important;
+  }
+
+  /* Fix borders */
+  .cv-page .border-black,
+  .cv-page .border-b-2,
+  .cv-page .border-gray-100,
+  .cv-page .border-t {
+    border-color: black !important;
+  }
+
+  /* Remove page margins */
+  @page {
+    margin: 0;
+    size: auto;
   }
 }

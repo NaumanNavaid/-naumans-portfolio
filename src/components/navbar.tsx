@@ -50,7 +50,7 @@ const Navbar = () => {
             <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-bold text-sm transition-transform group-hover:rotate-12 shadow-lg shadow-accent/20">
               N
             </div>
-            <span className="text-sm font-bold tracking-tighter uppercase hidden sm:block">
+            <span className="text-sm font-bold tracking-tighter uppercase hidden sm:block text-foreground">
               Nauman Navaid
             </span>
           </Link>
