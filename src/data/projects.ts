@@ -12,6 +12,17 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    title: 'FASCO E-Commerce Storefront',
+    description: 'Premium fashion retail experience with seamless mobile responsiveness, complex state management for shopping cart, and dynamic product routing. Built from scratch in 7 days without heavy UI libraries.',
+    challenge: 'Translate complex, high-fidelity Figma design into a blazing-fast Next.js application. Required implementing a mobile-optimized product gallery with thumbnail navigation, global cart state management using React Context, and dynamic [slug] routing for product pages.',
+    outcome: 'Delivered high-performance, fully responsive Next.js frontend MVP in just 7 days. Built modular component architecture with pixel-perfect Tailwind CSS styling. Clean, maintainable codebase fully prepped for seamless backend integration (Shopify, Sanity, or custom Node.js).',
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'Context API', 'TypeScript', 'Responsive Design'],
+    image: '/fasco-ecommerce.png',
+    link: '/projects/fasco-ecommerce',
+    deploymentLink: 'https://fasco-ecommerce-frontend.vercel.app/',
+    linkedinLink: 'https://www.linkedin.com/in/nauman-navaid/',
+  },
+  {
     title: 'CV Crafter',
     description: 'Platform where users can get custom-made resumes from professionals. Interactive forms collect user data and connect users with expert CV writers for tailored, ATS-optimized resumes.',
     challenge: 'Job seekers struggle to create well-formatted, tailored resumes. Needed a platform connecting users with professional CV writers for personalized resume services.',

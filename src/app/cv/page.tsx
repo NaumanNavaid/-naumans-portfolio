@@ -10,6 +10,15 @@ const CVPage = () => {
 
   const projects = [
     {
+      title: "FASCO E-Commerce Storefront",
+      tech: "Next.js, React, Tailwind CSS",
+      description: "Premium fashion retail experience built in 7 days with mobile-optimized product gallery and Context API cart state.",
+      highlights: [
+        "Pixel-perfect Figma translation with modular architecture",
+        "Dynamic [slug] routing with simulated database mapping"
+      ]
+    },
+    {
       title: "CV Crafter",
       tech: "Next.js, TypeScript, FastAPI",
       description: "Platform where users can get custom-made resumes from professionals.",

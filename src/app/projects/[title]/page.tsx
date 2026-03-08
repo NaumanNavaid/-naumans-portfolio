@@ -68,7 +68,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ title:
       </section>
 
       {/* Hero Image */}
-      <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto pb-24">
+      <section className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-5xl mx-auto pb-24">
         <div className="relative rounded-[48px] overflow-hidden glass p-4 shadow-spatial-lg border-accent/10 transition-all duration-500 hover:shadow-2xl">
           <Image
             src={project.image}

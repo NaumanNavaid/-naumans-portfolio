@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next lint)",
+      "WebFetch(domain:fasco-ecommerce-frontend.vercel.app)"
+    ]
+  }
+}
